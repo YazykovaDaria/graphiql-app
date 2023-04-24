@@ -4,6 +4,7 @@
 
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { configDefaults } from 'vitest/dist/config';
 
 export default defineConfig({
   plugins: [react()],
@@ -11,5 +12,12 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: './src/tests/setupTests.ts',
+    coverage: {
+      provider: 'c8',
+      all: true,
+      skipFull: true,
+      reporter: ['text'],
+      exclude: [...configDefaults.coverage.exclude, 'src/types/*'],
+    },
   },
 });
