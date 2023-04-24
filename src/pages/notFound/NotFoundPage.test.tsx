@@ -8,7 +8,7 @@ describe('Not found page', () => {
     render(<NotFoundPage />);
     expect(
       screen.getByRole('heading', {
-        level: 1,
+        level: 2,
       })
     ).toHaveTextContent('Page not found');
   });
