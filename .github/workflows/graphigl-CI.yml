@@ -14,7 +14,7 @@ on:
       - '*'
 
 env:
-  GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.DEPLOY_SECRET }}
 
 jobs:
   buildAndTest:
