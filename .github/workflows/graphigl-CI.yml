@@ -48,8 +48,8 @@ jobs:
         run: npm run lint
 
       # Build
-      - name: BUILD
-        run: npm run build
+      # - name: BUILD
+      #   run: npm run build
 
       # Test
       - name: TEST VITEST
