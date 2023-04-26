@@ -8,11 +8,12 @@ env:
   CI: true
 
 jobs:
-  rush-on: ubuntu-latest
-  steps:
-    name: get repository code
-    uses: actions/checkout@v3
-    name: install dependies
-    run: npm ci
-    name: test
-    run: npm run test
+  test:
+    rush-on: ubuntu-latest
+    steps:
+      name: get repository code
+      uses: actions/checkout@v3
+      name: install dependies
+      run: npm ci
+      name: test
+      run: npm run test
