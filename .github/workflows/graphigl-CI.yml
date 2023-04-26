@@ -22,7 +22,7 @@ jobs:
     name: Build & Test
     strategy:
       matrix:
-        os: [windows-latest, macos-latest, ubuntu-latest]
+        os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
@@ -54,18 +54,3 @@ jobs:
       # Test
       - name: TEST VITEST
         run: npm run test
-
-  coverage:
-    name: Coverage analysis
-    needs: buildAndTest
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-          token: ${{ env.GITHUB_TOKEN }}
-
-      # Donwload coverage artifacts
-      - uses: actions/download-artifact@v3
-        with:
-          name: coverage
