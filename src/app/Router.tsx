@@ -8,11 +8,11 @@ export function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<WelcomePage />} />
-        <Route path="/main" element={<MainPage />} />
+        <Route path='/' element={<WelcomePage />} />
+        <Route path='/main' element={<MainPage />} />
 
-        <Route path="/auth" element={<AuthPage />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path='/auth' element={<AuthPage />} />
+        <Route path='*' element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );
