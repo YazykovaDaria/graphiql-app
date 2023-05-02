@@ -9,8 +9,8 @@
     "preview": "vite preview",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "lint": "eslint ./src",
-    "lint-fix": "eslint ./src --fix",
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix",
     "prepare": "husky install"
   },
   "dependencies": {
