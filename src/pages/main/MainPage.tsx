@@ -1,3 +1,5 @@
+import { Section } from '../../components/Section/Section';
+
 export function MainPage() {
-  return <p>Main page</p>;
+  return <Section name='Hello Page'>Hello</Section>;
 }
