@@ -9,7 +9,7 @@ type Locale = {
 
 type Locales = Record<string, Locale>;
 
-const locales: Locales = {
+export const locales: Locales = {
   en: { img: flagEn },
   ru: { img: flagRu },
 };
@@ -34,6 +34,7 @@ export function LangSwitcher() {
           px: 1,
         },
       }}
+      data-testid='switch-lng'
     >
       {Object.keys(locales).map((locale) => (
         <MenuItem value={locale} key={locale}>

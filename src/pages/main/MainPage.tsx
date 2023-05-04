@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { LangSwitcher } from 'src/components/LangSwitcher';
+import { LangSwitcher } from 'src/components/langSwitcher/LangSwitcher';
 
 // it's just example, delete it if you need
 export function MainPage() {
