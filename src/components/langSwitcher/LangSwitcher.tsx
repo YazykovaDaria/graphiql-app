@@ -39,6 +39,7 @@ export function LangSwitcher() {
       {Object.keys(locales).map((locale) => (
         <MenuItem value={locale} key={locale}>
           <Avatar
+            data-testid={`lng-${locale}`}
             variant='rounded'
             alt={`flag ${locale}`}
             src={locales[locale].img}
