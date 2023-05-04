@@ -14,7 +14,7 @@ const locales: Locales = {
   ru: { img: flagRu },
 };
 
-function LangSwitcher() {
+export function LangSwitcher() {
   const { i18n } = useTranslation();
   const defaultLang = i18n.resolvedLanguage;
 
@@ -51,5 +51,3 @@ function LangSwitcher() {
     </Select>
   );
 }
-
-export default LangSwitcher;

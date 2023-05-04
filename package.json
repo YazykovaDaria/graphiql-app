@@ -11,7 +11,8 @@
     "coverage": "vitest run --coverage",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "ext-translations": "i18next -c i18n-parser.config.cjs --fail-on-warnings"
   },
   "dependencies": {
     "@emotion/react": "^11.10.8",
