@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import * as pages from '../pages';
+import * as pages from '../../pages';
 
 const { MainPage, NotFoundPage, WelcomePage, SignUpPage } = pages;
 
