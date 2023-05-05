@@ -1,4 +1,15 @@
 {
+  "auth": {
+    "sign-in": "Sign in",
+    "sign-up": "Sign up",
+    "email-pattern-error": "Please provide a correct email address",
+    "email-label": "Email Address",
+    "password-pattern-error": "Password should contain at least one uppercase letter, one lowercase letter and one number",
+    "password-min-length-error": "Password cannot be under 8 symbols",
+    "password-label": "Password",
+    "sign-in-link": "Already have an account? Sign in",
+    "sign-up-link": "Don't have an account? Sign Up"
+  },
   "main": {
     "title": "This is the main page",
     "test": "test"
