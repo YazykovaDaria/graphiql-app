@@ -1,34 +1,40 @@
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { Box, Avatar, Typography, Grid, TextField, Link } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import type { AuthFormInputs } from 'src/types/AuthFormInputs';
 
 type FormData = {
   title: string;
   link: string;
-  authSubmit: () => void;
-};
-
-type FormInputs = {
-  email: string;
-  password: string;
+  authSubmit: ({ email, password }: AuthFormInputs) => Promise<void>;
 };
 
 export function AuthForm({ title, link, authSubmit }: FormData) {
   const isSignIn = link === '/sign-in';
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const {
     control,
     handleSubmit,
     reset,
-    formState: { errors, isValid },
-  } = useForm<FormInputs>({ mode: 'onBlur' });
+    formState: { errors, isValid, isSubmitting },
+  } = useForm<AuthFormInputs>({ mode: 'onBlur' });
 
-  const onSubmit = () => {
-    authSubmit();
-    reset();
+  const onSubmit: SubmitHandler<AuthFormInputs> = async ({ email, password }: AuthFormInputs) => {
+    try {
+      await authSubmit({ email, password });
+      const navTimeout = setTimeout(() => {
+        navigate('/main');
+        clearTimeout(navTimeout);
+      }, 3000);
+    } catch (error) {
+      throw new Error(`${error}`);
+    } finally {
+      reset();
+    }
   };
 
   return (
@@ -117,6 +123,7 @@ export function AuthForm({ title, link, authSubmit }: FormData) {
           fullWidth
           disabled={!isValid}
           variant='contained'
+          loading={isSubmitting}
           sx={{ mt: 3, mb: 2 }}
         >
           <span>{title}</span>
@@ -124,7 +131,7 @@ export function AuthForm({ title, link, authSubmit }: FormData) {
         <Grid container justifyContent='flex-end'>
           <Grid item>
             <Link component={RouterLink} to={link} variant='body2'>
-              {isSignIn ? t('auth.sign-in-link') : t('auth.sign-up-link')} {title}
+              {isSignIn ? t('auth.sign-up-link') : t('auth.sign-in-link')}
             </Link>
           </Grid>
         </Grid>
