@@ -1,14 +1,20 @@
 import { StrictMode, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
+import { setupStore } from './store/store';
 import { App } from './app/App';
 import './index.css';
 import './i18next/i18n';
 import { Preloader } from './components/langSwitcher/preloader/Preloader';
 
+// перенести провайдер в апп после мёржа изменений кости
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <StrictMode>
     <Suspense fallback={<Preloader />}>
-      <App />
+      <Provider store={setupStore()}>
+        <App />
+      </Provider>
     </Suspense>
   </StrictMode>
 );
