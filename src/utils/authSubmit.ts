@@ -1,6 +1,12 @@
 import { FirebaseError } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-import type { User } from 'firebase/auth';
+import {
+  getAuth,
+  setPersistence,
+  browserLocalPersistence,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  User,
+} from 'firebase/auth';
 import { AuthFormInputs } from 'src/types/AuthFormInputs';
 
 export interface AuthSubmit extends AuthFormInputs {
@@ -13,6 +19,7 @@ export const authSubmit = async ({ isSignIn, email, password }: AuthSubmit) => {
   try {
     let user: User;
 
+    await setPersistence(auth, browserLocalPersistence);
     if (isSignIn) {
       user = (await signInWithEmailAndPassword(auth, email, password)).user;
     } else {
