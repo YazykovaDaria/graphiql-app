@@ -1,6 +1,5 @@
 import { FirebaseError } from 'firebase/app';
 import {
-  getAuth,
   setPersistence,
   browserLocalPersistence,
   createUserWithEmailAndPassword,
@@ -8,14 +7,13 @@ import {
   User,
 } from 'firebase/auth';
 import { AuthFormInputs } from 'src/types/AuthFormInputs';
+import { auth } from './firebase';
 
 export interface AuthSubmit extends AuthFormInputs {
   isSignIn: boolean;
 }
 
 export const authSubmit = async ({ isSignIn, email, password }: AuthSubmit) => {
-  const auth = getAuth();
-
   try {
     let user: User;
 
