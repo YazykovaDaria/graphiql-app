@@ -9,7 +9,6 @@ export function MainPage() {
 
   return (
     <Section name='Hello Page'>
-      {' '}
       <LangSwitcher />
       <p>{t('main.title')}</p>
       <p>{t('main.test')}</p>

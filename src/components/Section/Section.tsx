@@ -12,7 +12,7 @@ export function Section({ children = '', name }: ISectionProps) {
       <Typography component='h3' variant='h3'>
         {name}
       </Typography>
-      {children}
+      <Container maxWidth='md'> {children}</Container>
     </Container>
   );
 }
