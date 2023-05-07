@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
@@ -14,17 +15,19 @@ type FormData = {
 
 export function AuthForm({ title, link, authSubmit }: FormData) {
   const isSignIn = link === 'sign-in';
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { t } = useTranslation();
   const navigate = useNavigate();
   const {
     control,
     handleSubmit,
     reset,
-    formState: { errors, isValid, isSubmitting },
+    formState: { errors, isValid },
   } = useForm<AuthFormInputs>({ mode: 'onBlur' });
 
   const onSubmit: SubmitHandler<AuthFormInputs> = async ({ email, password }: AuthFormInputs) => {
     try {
+      setIsSubmitting(true);
       await authSubmit({ email, password });
       const navTimeout = setTimeout(() => {
         reset();
@@ -33,6 +36,8 @@ export function AuthForm({ title, link, authSubmit }: FormData) {
       }, 3000);
     } catch (error) {
       throw new Error(`${error}`);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
