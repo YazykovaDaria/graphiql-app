@@ -15,8 +15,9 @@ export const authSubmit = async ({ isSignIn, email, password }: AuthSubmit) => {
 
     if (isSignIn) {
       user = (await signInWithEmailAndPassword(auth, email, password)).user;
+    } else {
+      user = (await createUserWithEmailAndPassword(auth, email, password)).user;
     }
-    user = (await createUserWithEmailAndPassword(auth, email, password)).user;
 
     return user;
   } catch (error) {
