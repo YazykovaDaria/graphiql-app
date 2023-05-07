@@ -23,7 +23,7 @@ export function SignUpPage() {
 
   return (
     <Container>
-      <AuthForm title={t('auth.sign-up')} link='sign-up' authSubmit={onSubmit} />
+      <AuthForm title={t('auth.sign-up')} link='sign-in' authSubmit={onSubmit} />
     </Container>
   );
 }
