@@ -8,12 +8,12 @@ import type { AuthFormInputs } from 'src/types/AuthFormInputs';
 
 type FormData = {
   title: string;
-  link: string;
+  link: 'sign-in' | 'sign-up';
   authSubmit: ({ email, password }: AuthFormInputs) => Promise<void>;
 };
 
 export function AuthForm({ title, link, authSubmit }: FormData) {
-  const isSignIn = link === '/sign-in';
+  const isSignIn = link === 'sign-in';
   const { t } = useTranslation();
   const navigate = useNavigate();
   const {
@@ -130,7 +130,7 @@ export function AuthForm({ title, link, authSubmit }: FormData) {
         </LoadingButton>
         <Grid container justifyContent='flex-end'>
           <Grid item>
-            <Link component={RouterLink} to={link} variant='body2'>
+            <Link component={RouterLink} to={`/${link}`} variant='body2'>
               {isSignIn ? t('auth.sign-up-link') : t('auth.sign-in-link')}
             </Link>
           </Grid>

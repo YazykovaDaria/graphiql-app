@@ -15,7 +15,7 @@ export function SignUpPage() {
 
   return (
     <Container>
-      <AuthForm title='Sign Up' link='/sign-up' authSubmit={onSubmit} />
+      <AuthForm title='Sign Up' link='sign-up' authSubmit={onSubmit} />
     </Container>
   );
 }
