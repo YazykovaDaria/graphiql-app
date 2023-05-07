@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Container } from '@mui/material';
 import { AuthForm } from 'src/components/authForm/AuthForm';
 import { useAppDispatch } from 'src/hooks/reduxHooks';
@@ -7,6 +8,7 @@ import { AuthFormInputs } from 'src/types/AuthFormInputs';
 import { FirebaseError } from 'firebase/app';
 
 export function SignUpPage() {
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
   const onSubmit = async ({ email, password }: AuthFormInputs) => {
@@ -21,7 +23,7 @@ export function SignUpPage() {
 
   return (
     <Container>
-      <AuthForm title='Sign Up' link='sign-up' authSubmit={onSubmit} />
+      <AuthForm title={t('auth.sign-up')} link='sign-up' authSubmit={onSubmit} />
     </Container>
   );
 }
