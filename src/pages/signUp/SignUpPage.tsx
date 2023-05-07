@@ -4,13 +4,19 @@ import { useAppDispatch } from 'src/hooks/reduxHooks';
 import { authSubmit } from 'src/utils/authSubmit';
 import { setCredentials } from 'src/store/slices/authSlice';
 import { AuthFormInputs } from 'src/types/AuthFormInputs';
+import { FirebaseError } from 'firebase/app';
 
 export function SignUpPage() {
   const dispatch = useAppDispatch();
 
   const onSubmit = async ({ email, password }: AuthFormInputs) => {
-    const userData = await authSubmit({ isSignIn: false, email, password });
-    dispatch(setCredentials(userData.refreshToken));
+    const data = await authSubmit({ isSignIn: false, email, password });
+
+    if (data instanceof FirebaseError) {
+      throw new Error(data.code);
+    } else {
+      dispatch(setCredentials(data.refreshToken));
+    }
   };
 
   return (

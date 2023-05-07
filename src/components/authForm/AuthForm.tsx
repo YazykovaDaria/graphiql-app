@@ -27,13 +27,12 @@ export function AuthForm({ title, link, authSubmit }: FormData) {
     try {
       await authSubmit({ email, password });
       const navTimeout = setTimeout(() => {
+        reset();
         navigate('/main');
         clearTimeout(navTimeout);
       }, 3000);
     } catch (error) {
       throw new Error(`${error}`);
-    } finally {
-      reset();
     }
   };
 
@@ -51,6 +50,7 @@ export function AuthForm({ title, link, authSubmit }: FormData) {
       <Typography component='h1' variant='h5'>
         {title}
       </Typography>
+
       <Box component='form' onSubmit={handleSubmit(onSubmit)} sx={{ mt: 3 }}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
@@ -65,7 +65,7 @@ export function AuthForm({ title, link, authSubmit }: FormData) {
                   message: t('auth.email-pattern-error'),
                 },
               }}
-              render={({ field: { onChange, onBlur, name, ref } }) => (
+              render={({ field: { onChange, onBlur, name, value, ref } }) => (
                 <TextField
                   margin='normal'
                   fullWidth
@@ -76,6 +76,7 @@ export function AuthForm({ title, link, authSubmit }: FormData) {
                   onChange={onChange}
                   onBlur={onBlur}
                   name={name}
+                  value={value}
                   inputRef={ref}
                   error={!!errors.email}
                   helperText={errors.email ? errors.email?.message : ''}
@@ -83,6 +84,7 @@ export function AuthForm({ title, link, authSubmit }: FormData) {
               )}
             />
           </Grid>
+
           <Grid item xs={12}>
             <Controller
               name='password'
@@ -99,7 +101,7 @@ export function AuthForm({ title, link, authSubmit }: FormData) {
                   message: t('auth.password-min-length-error'),
                 },
               }}
-              render={({ field: { onChange, onBlur, name, ref } }) => (
+              render={({ field: { onChange, onBlur, name, value, ref } }) => (
                 <TextField
                   margin='normal'
                   fullWidth
@@ -110,6 +112,7 @@ export function AuthForm({ title, link, authSubmit }: FormData) {
                   onChange={onChange}
                   onBlur={onBlur}
                   name={name}
+                  value={value}
                   inputRef={ref}
                   error={!!errors.password}
                   helperText={errors.password ? errors.password?.message : ''}
@@ -118,6 +121,7 @@ export function AuthForm({ title, link, authSubmit }: FormData) {
             />
           </Grid>
         </Grid>
+
         <LoadingButton
           type='submit'
           fullWidth
@@ -128,6 +132,7 @@ export function AuthForm({ title, link, authSubmit }: FormData) {
         >
           <span>{title}</span>
         </LoadingButton>
+
         <Grid container justifyContent='flex-end'>
           <Grid item>
             <Link component={RouterLink} to={`/${link}`} variant='body2'>
