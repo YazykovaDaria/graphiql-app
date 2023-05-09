@@ -27,7 +27,7 @@ export function AuthButton({ title, link, isLogout }: AuthButtonProps) {
 
   return (
     <LoadingButton loading={isLoading} onClick={handleClick}>
-      {title}
+      <span>{title}</span>
     </LoadingButton>
   );
 }
