@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Container } from '@mui/material';
 import { AuthForm } from 'src/components/authForm/AuthForm';
-import { authSubmit } from 'src/utils/authSubmit';
+import { authSubmit } from 'src/utils/authSubmit/authSubmit';
 import { AuthFormInputs } from 'src/types/AuthFormInputs';
 
 export function SignUpPage() {
