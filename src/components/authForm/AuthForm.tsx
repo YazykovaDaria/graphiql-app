@@ -141,7 +141,7 @@ export function AuthForm({ title, link, authSubmit }: FormData) {
         <Grid container justifyContent='flex-end'>
           <Grid item>
             <Link component={RouterLink} to={`/${link}`} variant='body2'>
-              {isSignIn ? t('auth.sign-up-link') : t('auth.sign-in-link')}
+              {isSignIn ? t('auth.sign-in-link') : t('auth.sign-up-link')}
             </Link>
           </Grid>
         </Grid>
