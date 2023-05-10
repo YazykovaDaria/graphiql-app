@@ -1,15 +1,13 @@
-import { useTranslation } from 'react-i18next';
-import { LangSwitcher } from 'src/components/langSwitcher/LangSwitcher';
+import { Toolbar } from 'src/components/toolbar/Toolbar';
+import { Editor } from 'src/components/editor/Editor';
+import { ResponseSection } from 'src/components/responseSection/ResponseSection';
 
-// it's just example, delete it if you need
 export function MainPage() {
-  const { t } = useTranslation();
   return (
     <div>
-      <LangSwitcher />
-      <p>{t('main.title')}</p>
-      <p>{t('main.test')}</p>
-      <p>Main page</p>
+      <Toolbar />
+      <Editor />
+      <ResponseSection />
     </div>
   );
 }

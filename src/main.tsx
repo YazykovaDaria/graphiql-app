@@ -5,7 +5,7 @@ import { setupStore } from './store/store';
 import { App } from './app/App';
 import './index.css';
 import './i18next/i18n';
-import { Preloader } from './components/langSwitcher/preloader/Preloader';
+import { Preloader } from './components/preloader/Preloader';
 
 // перенести провайдер в апп после мёржа изменений кости
 
