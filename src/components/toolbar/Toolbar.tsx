@@ -1,5 +1,5 @@
-import { useAppDispatch, useAppSelector } from 'src/hooks/reduxHooks';
-import { updateQuery } from 'src/store/slices/editorSlice';
+import { useAppSelector } from 'src/hooks/reduxHooks';
+//import { updateQuery } from 'src/store/slices/editorSlice';
 import { useGetGraphQueryMutation } from 'src/store/api/graphQueryApi';
 
 export function Toolbar() {
@@ -14,7 +14,17 @@ export function Toolbar() {
   };
 
   const run = async () => {
-    const y = await getQuery('');
+    const y = await getQuery({
+      newQuery: `query ($id: Int) {
+        Media(id: $id, type: ANIME){
+          id
+          status
+        }
+      }`,
+      newVariables: `{
+        "id": 15125
+      }`,
+    });
     console.log(y);
   };
   return (
