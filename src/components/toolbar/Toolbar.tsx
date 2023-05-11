@@ -1,5 +1,5 @@
 import { useAppSelector } from 'src/hooks/reduxHooks';
-//import { updateQuery } from 'src/store/slices/editorSlice';
+// import { updateQuery } from 'src/store/slices/editorSlice';
 import { useGetGraphQueryMutation } from 'src/store/api/graphQueryApi';
 
 export function Toolbar() {
