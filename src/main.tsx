@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { setupStore } from './store/store';
 import { App } from './app/App';
 import './index.css';
+import './utils/firebase/firebase';
 import './i18next/i18n';
 import { Preloader } from './components/preloader/Preloader';
 
