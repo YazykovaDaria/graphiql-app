@@ -1,10 +1,10 @@
-// please add all providers for app here
-import { Router } from './Router';
+import { BrowserRouter } from 'react-router-dom';
+import { Router } from './router/Router';
 
 export function App() {
   return (
-    <div>
+    <BrowserRouter>
       <Router />
-    </div>
+    </BrowserRouter>
   );
 }
