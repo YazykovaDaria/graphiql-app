@@ -11,6 +11,7 @@ export function MainPage() {
       sx={{
         p: 1,
         width: '100%',
+        height: '100vh',
         borderRadius: '10px',
         background: '#F0F0F0',
         m: 0,
@@ -24,7 +25,7 @@ export function MainPage() {
         sx={{ background: 'white', borderRadius: '10px', pr: 1 }}
       >
         <Grid container spacing={2}>
-          <Grid item xs={10}>
+          <Grid item xs={10} sx={{ px: '10px' }}>
             <Editor />
           </Grid>
 
