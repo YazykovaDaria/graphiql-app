@@ -28,6 +28,10 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'import/prefer-default-export': 'off',
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+    'testing-library/no-render-in-setup': [
+      'error',
+      { allowTestingFrameworkSetupHook: 'beforeEach' },
+    ],
     'react/require-default-props': [
       'error',
       {
