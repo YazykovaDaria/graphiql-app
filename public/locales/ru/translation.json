@@ -12,6 +12,7 @@
   },
   "main": {
     "title": "Это главная страница",
-    "editorPlaceholder": "Добро пожаловать в GraphiQL\n\nGraphiQL это встроенный в браузер инструмент для написания, проверки и тестирование запросов GraphQL.\n\nПример запроса GraphQL может выглядеть так:\n  {\n      field arg: \"value\") {\n        subField\n      }\n  }\n\nВведите ваши запросы в эту часть экрана \n\nКонечная точка по умолчанию — https://graphql.anilist.co"
+    "editorPlaceholder": "Добро пожаловать в GraphiQL\n\nGraphiQL это встроенный в браузер инструмент для написания, проверки и тестирование запросов GraphQL.\n\nПример запроса GraphQL может выглядеть так:\n  {\n      field arg: \"value\") {\n        subField\n      }\n  }\n\nВведите ваши запросы в эту часть экрана \n\nКонечная точка по умолчанию — https://graphql.anilist.co",
+    "variables": "переменные"
     }
 }
