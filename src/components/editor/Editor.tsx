@@ -1,9 +1,10 @@
-import { useState, ChangeEvent, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { useAppSelector, useAppDispatch } from 'src/hooks/reduxHooks';
 import { updateQuery } from 'src/store/slices/editorSlice';
-import { TextField } from '@mui/material';
+import { TextField, Box } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { autoBracketComplete } from 'src/utils/autoComplete/bracketsAutoComplete';
+import { useAutoComplete } from 'src/hooks/useAutoComplete';
+import { Variables } from '../variablesSection/Variables';
 
 // ошибки mui из-за слишком длинного placeholder
 export function Editor() {
@@ -11,32 +12,25 @@ export function Editor() {
   const { query } = useAppSelector((state) => state.editor);
   const dispatch = useAppDispatch();
   const [value, setValue] = useState(query);
-  const [caretPosition, setCaretPosition] = useState(0);
-  const inputRef = useRef<HTMLInputElement | null>(null);
-
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.selectionStart = caretPosition;
-      inputRef.current.selectionEnd = caretPosition;
-    }
-  }, [caretPosition]);
+  const [handleChange, inputRef] = useAutoComplete(setValue);
 
   const handleBlur = () => {
-    dispatch(updateQuery(value));
-  };
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const [newValue, caretPos] = autoBracketComplete(e);
-    setValue(newValue);
-    if (caretPos) {
-      setCaretPosition(caretPos);
-    }
+    dispatch(updateQuery(value.trim()));
   };
 
   return (
-    <form>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        width: '100%',
+        height: '100%',
+      }}
+      component='form'
+    >
       <TextField
-        sx={{ width: '100%', height: '100%', '& fieldset': { border: 'none' } }}
+        sx={{ width: '100%', '& fieldset': { border: 'none' } }}
         onBlur={handleBlur}
         placeholder={t('main.editorPlaceholder') as string}
         multiline
@@ -46,6 +40,7 @@ export function Editor() {
         onChange={handleChange}
         inputRef={inputRef}
       />
-    </form>
+      <Variables />
+    </Box>
   );
 }

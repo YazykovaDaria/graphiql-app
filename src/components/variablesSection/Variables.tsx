@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { useAppSelector, useAppDispatch } from 'src/hooks/reduxHooks';
 import { updateVariables } from 'src/store/slices/editorSlice';
-import { useState, useEffect, useRef, ChangeEvent } from 'react';
-import { autoBracketComplete } from 'src/utils/autoComplete/bracketsAutoComplete';
+import { useState } from 'react';
+import { useAutoComplete } from 'src/hooks/useAutoComplete';
 import {
   Accordion,
   AccordionSummary,
@@ -17,26 +17,10 @@ export function Variables() {
   const dispatch = useAppDispatch();
   const { variables } = useAppSelector((state) => state.editor);
   const [value, setValue] = useState(variables);
-  const [caretPosition, setCaretPosition] = useState(1);
-  const inputRef = useRef<HTMLInputElement | null>(null);
-
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.selectionStart = caretPosition;
-      inputRef.current.selectionEnd = caretPosition;
-    }
-  }, [caretPosition]);
+  const [handleChange, inputRef] = useAutoComplete(setValue, 1);
 
   const handleBlur = () => {
     dispatch(updateVariables(value.trim()));
-  };
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const [newValue, caretPos] = autoBracketComplete(e);
-    setValue(newValue);
-    if (caretPos) {
-      setCaretPosition(caretPos);
-    }
   };
 
   return (
@@ -50,7 +34,7 @@ export function Variables() {
       </AccordionSummary>
 
       <TextField
-        sx={{ width: '100%', '& fieldset': { border: 'none' } }}
+        sx={{ width: '100%', height: '40%', '& fieldset': { border: 'none' } }}
         onBlur={handleBlur}
         multiline
         fullWidth
