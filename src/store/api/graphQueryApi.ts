@@ -5,6 +5,7 @@ const baseUrl = 'https://graphql.anilist.co';
 type QueryArgs = {
   newQuery: string;
   newVariables?: string;
+  type?: string;
 };
 
 export const graphQueryApi = createApi({
@@ -12,14 +13,14 @@ export const graphQueryApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
     getGraphQuery: builder.mutation({
-      query: ({ newQuery, newVariables = '{}' }: QueryArgs) => ({
+      query: ({ newQuery, newVariables = '{}', type = 'query' }: QueryArgs) => ({
         url: '',
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
         },
         body: JSON.stringify({
-          query: newQuery,
+          [type]: newQuery,
           variables: newVariables,
         }),
       }),

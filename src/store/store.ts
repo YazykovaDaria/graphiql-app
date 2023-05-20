@@ -1,9 +1,11 @@
 import { combineReducers, configureStore, PreloadedState } from '@reduxjs/toolkit';
 import editorReducer from './slices/editorSlice';
+import responseReducer from './slices/responseSectionSlice';
 import { graphQueryApi } from './api/graphQueryApi';
 
 const rootReducer = combineReducers({
   editor: editorReducer,
+  response: responseReducer,
   [graphQueryApi.reducerPath]: graphQueryApi.reducer,
 });
 export function setupStore(preloadedState?: PreloadedState<RootState>) {
