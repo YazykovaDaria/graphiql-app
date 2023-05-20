@@ -2,6 +2,7 @@ import { useAppDispatch, useAppSelector } from 'src/hooks/reduxHooks';
 import { togglePlay } from 'src/store/slices/responseSectionSlice';
 import { useGetGraphQueryMutation } from 'src/store/api/graphQueryApi';
 import { useEffect, useState } from 'react';
+// import { objectParser } from 'src/utils/parser/objectParser';
 
 export function ResponseSection() {
   const { isPlay } = useAppSelector((state) => state.response);
@@ -16,7 +17,7 @@ export function ResponseSection() {
         try {
           const res = await getQuery({
             // newQuery: `query ($id: Int){
-            //   Media (){
+            //   Media (id: $id, type: ANIME){
             //     title {
             //       romaji
             //       english
@@ -30,6 +31,7 @@ export function ResponseSection() {
             newVariables: variables,
           });
           if ('data' in res) {
+            // objectParser(res.data);
             setData(JSON.stringify(res.data, null, 2));
           } else if ('error' in res) {
             setData(JSON.stringify(res.error, null, 2));
@@ -45,5 +47,18 @@ export function ResponseSection() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPlay, getQuery]);
 
-  return <div>{data && <pre>{data}</pre>}</div>;
+  return (
+    <div>
+      {data && (
+        <pre
+          style={{
+            whiteSpace: 'pre-line',
+            wordBreak: 'break-all',
+          }}
+        >
+          {data}
+        </pre>
+      )}
+    </div>
+  );
 }
