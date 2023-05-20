@@ -24,7 +24,7 @@ export function Variables() {
   };
 
   return (
-    <Accordion>
+    <Accordion data-testid='variables'>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls='panel1a-content'
@@ -42,6 +42,7 @@ export function Variables() {
         value={value}
         onChange={handleChange}
         inputRef={inputRef}
+        autoFocus
       />
 
       <AccordionDetails />

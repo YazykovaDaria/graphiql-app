@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next';
 import { useAutoComplete } from 'src/hooks/useAutoComplete';
 import { Variables } from '../variablesSection/Variables';
 
-// ошибки mui из-за слишком длинного placeholder
 export function Editor() {
   const { t } = useTranslation();
   const { query } = useAppSelector((state) => state.editor);
@@ -28,6 +27,7 @@ export function Editor() {
         height: '100%',
       }}
       component='form'
+      name='editor'
     >
       <TextField
         sx={{ width: '100%', '& fieldset': { border: 'none' } }}
@@ -39,8 +39,9 @@ export function Editor() {
         value={value}
         onChange={handleChange}
         inputRef={inputRef}
+        name='query'
       />
-      <Variables />
+      {/* <Variables /> */}
     </Box>
   );
 }
