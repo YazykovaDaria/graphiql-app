@@ -10,8 +10,8 @@ type QueryArgs = {
 
 type GraphQueryResult = {
   data: {
-    data: Record<string, unknown>;
     error?: Record<string, unknown>;
+    data: Record<string, unknown>;
   };
 };
 
