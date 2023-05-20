@@ -11,16 +11,34 @@ export function ResponseSection() {
   const [data, setData] = useState('');
 
   useEffect(() => {
-    // добавить обработку ошибок
     const run = async () => {
       if (isPlay) {
-        const res = await getQuery({
-          newQuery: query,
-          newVariables: variables,
-        });
-
-        setData(JSON.stringify(res, null, 2));
-        dispatch(togglePlay(false));
+        try {
+          const res = await getQuery({
+            // newQuery: `query ($id: Int){
+            //   Media (){
+            //     title {
+            //       romaji
+            //       english
+            //       native
+            //       userPreferred
+            //     }
+            //   }
+            //   }`,
+            // newVariables: `{"id": 1222}`,
+            newQuery: query,
+            newVariables: variables,
+          });
+          if ('data' in res) {
+            setData(JSON.stringify(res.data, null, 2));
+          } else if ('error' in res) {
+            setData(JSON.stringify(res.error, null, 2));
+          }
+        } catch (err) {
+          console.log(`Add error handing in response component. Error - ${err}`);
+        } finally {
+          dispatch(togglePlay(false));
+        }
       }
     };
     run();
