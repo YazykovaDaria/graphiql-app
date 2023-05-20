@@ -1,10 +1,13 @@
 import { BrowserRouter } from 'react-router-dom';
 import { Router } from './router/Router';
+import { AuthProvider } from '../hocs/AuthProvider';
 
 export function App() {
   return (
-    <BrowserRouter>
-      <Router />
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
+    </AuthProvider>
   );
 }

@@ -3,6 +3,7 @@ import { Typography, Grid, Link } from '@mui/material';
 
 import { useTranslation } from 'react-i18next';
 import { Section } from '../../components/Section/Section';
+import { useAuth } from '../../hooks/useAuth';
 
 const members = [
   {
@@ -27,9 +28,19 @@ const advantages = ['needed', 'single', 'types'];
 
 export function WelcomePage() {
   const { t } = useTranslation();
+  const { user, checked } = useAuth();
 
   return (
     <>
+      {user && checked ? (
+        <Link href='main' width='100%' display='block' textAlign='center'>
+          To main
+        </Link>
+      ) : (
+        <Link href='sign-in' width='100%' display='block' textAlign='center'>
+          Log-in
+        </Link>
+      )}
       <Section name='GraphQL'>
         <Typography sx={{ padding: '30px 0 60px' }}>{t('hello.info.content')}</Typography>
       </Section>
