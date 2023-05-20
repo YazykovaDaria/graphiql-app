@@ -41,7 +41,7 @@ export function Editor() {
         inputRef={inputRef}
         name='query'
       />
-      {/* <Variables /> */}
+      <Variables />
     </Box>
   );
 }

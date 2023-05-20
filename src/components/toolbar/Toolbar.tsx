@@ -8,11 +8,19 @@ export function Toolbar() {
     <Box
       sx={{
         height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
-      <DocsButton />
-      <QueryButton />
-      <PrettyButton />
+      <div>
+        <DocsButton />
+      </div>
+      <div>
+        <QueryButton />
+      </div>
+      <div>
+        <PrettyButton />
+      </div>
     </Box>
   );
 }
