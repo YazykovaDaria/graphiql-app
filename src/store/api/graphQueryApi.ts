@@ -8,11 +8,18 @@ type QueryArgs = {
   type?: string;
 };
 
+type GraphQueryResult = {
+  data: {
+    data: Record<string, unknown>;
+    error?: Record<string, unknown>;
+  };
+};
+
 export const graphQueryApi = createApi({
   reducerPath: 'graphQueryApi',
   baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
-    getGraphQuery: builder.mutation({
+    getGraphQuery: builder.mutation<GraphQueryResult, QueryArgs>({
       query: ({ newQuery, newVariables = '{}', type = 'query' }: QueryArgs) => ({
         url: '',
         method: 'POST',
