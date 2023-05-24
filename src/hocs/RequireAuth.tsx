@@ -12,11 +12,11 @@ interface IRequireAuth {
 export function RequireAuth({ children }: IRequireAuth) {
   const location = useLocation();
 
-  const { user, checked } = useAuth();
+  const { email, checked } = useAuth();
 
   if (!checked) return <Typography>Checking...</Typography>;
 
-  if (!user) {
+  if (!email) {
     return <Navigate to='/sign-in' state={{ from: location }} />;
   }
 

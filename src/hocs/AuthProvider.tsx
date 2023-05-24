@@ -4,11 +4,11 @@ import { User, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../utils/firebase/firebase';
 
 type SignInCheck = {
-  user: User | null;
+  email: string | null;
   checked: boolean;
 };
 
-export const AuthContext = createContext<SignInCheck>({ user: null, checked: false });
+export const AuthContext = createContext<SignInCheck>({ email: null, checked: false });
 
 interface IAuthProvider {
   children?: React.ReactElement | string;
@@ -18,12 +18,14 @@ export function AuthProvider({ children = '' }: IAuthProvider) {
   const [user, setUser] = useState<User | null>(null);
   const [checked, setChecked] = useState(false);
 
+  const email = user?.email || null;
+
   const status = useMemo(
     () => ({
-      user,
+      email,
       checked,
     }),
-    [user, checked]
+    [email, checked]
   );
 
   useEffect(() => {

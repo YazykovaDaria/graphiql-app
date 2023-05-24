@@ -1,7 +1,7 @@
 import { AppBar, Typography, Toolbar, IconButton, Box, Slide } from '@mui/material';
 import { WbSunny } from '@mui/icons-material';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
-// import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../hooks/useAuth';
 import { LangSwitcher } from './langSwitcher/LangSwitcher';
 import { AuthButton } from './authButton/AuthButton';
@@ -21,9 +21,9 @@ function HideOnScroll({ children }: HideOnScrollProps) {
 }
 
 export function Header() {
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
 
-  const { user, checked } = useAuth();
+  const { email, checked } = useAuth();
 
   return (
     <HideOnScroll>
@@ -33,12 +33,18 @@ export function Header() {
           <Box flexGrow={1} />
           <LangSwitcher />
           <AuthButton
-            title={`${user && checked ? 'Log-out' : 'Log-in'}`}
-            isLogout={!!user}
+            title={`${
+              email && checked
+                ? t('header.authorization-button.log-out')
+                : t('header.authorization-button.log-in')
+            }`}
+            isLogout={!!email}
             link='sign-in'
           />
-          <IconButton sx={{ borderRadius: 2, color: 'inherit' }}>
-            <Typography sx={{ display: { xs: 'none', md: 'block' } }}>Theme mod:</Typography>
+          <IconButton sx={{ borderRadius: 2, color: 'inherit', columnGap: '5px' }}>
+            <Typography sx={{ display: { xs: 'none', md: 'block' } }}>
+              {t('header.theme-button')}
+            </Typography>
             <WbSunny />
           </IconButton>
         </Toolbar>
