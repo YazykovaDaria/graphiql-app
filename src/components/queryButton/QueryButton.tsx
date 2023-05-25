@@ -1,26 +1,16 @@
 import { IconButton } from '@mui/material';
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
-import { useGetGraphQueryMutation } from 'src/store/api/graphQueryApi';
+import { useAppSelector, useAppDispatch } from 'src/hooks/reduxHooks';
+import { togglePlay } from 'src/store/slices/responseSectionSlice';
 
 export function QueryButton() {
-  const [getQuery] = useGetGraphQueryMutation();
+  const { isPlay } = useAppSelector((state) => state.response);
+  const dispatch = useAppDispatch();
 
-  const run = async () => {
-    const y = await getQuery({
-      newQuery: `query ($id: Int) {
-        Media(id: $id, type: ANIME){
-          id
-          status
-        }
-      }`,
-      newVariables: `{
-        "id": 15125
-      }`,
-    });
-    console.log(y);
-  };
+  const run = () => dispatch(togglePlay(true));
+
   return (
-    <IconButton aria-label='query' color='success' size='large' onClick={run}>
+    <IconButton aria-label='query' color='success' size='large' onClick={run} disabled={isPlay}>
       <PlayCircleOutlineIcon fontSize='inherit' />
     </IconButton>
   );
