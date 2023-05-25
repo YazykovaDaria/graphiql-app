@@ -1,7 +1,6 @@
 import { Box } from '@mui/material';
 import { QueryButton } from '../queryButton/QueryButton';
 import { DocsButton } from '../docsButton/DocsButton';
-import { PrettyButton } from '../prettyButton/PrettyButton';
 
 export function Toolbar() {
   return (
@@ -10,6 +9,7 @@ export function Toolbar() {
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
+        gap: '1rem',
       }}
     >
       <div>
@@ -17,9 +17,6 @@ export function Toolbar() {
       </div>
       <div>
         <QueryButton />
-      </div>
-      <div>
-        <PrettyButton />
       </div>
     </Box>
   );
