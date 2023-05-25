@@ -6,8 +6,6 @@ import { togglePlay } from 'src/store/slices/responseSectionSlice';
 export function QueryButton() {
   const { isPlay } = useAppSelector((state) => state.response);
   const dispatch = useAppDispatch();
-  // const [getQuery] = useGetGraphQueryMutation();
-  // const { query, variables } = useAppSelector((state) => state.editor);
 
   const run = () => dispatch(togglePlay(true));
 

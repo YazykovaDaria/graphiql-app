@@ -2,7 +2,6 @@ import { useAppDispatch, useAppSelector } from 'src/hooks/reduxHooks';
 import { togglePlay } from 'src/store/slices/responseSectionSlice';
 import { useGetGraphQueryMutation } from 'src/store/api/graphQueryApi';
 import { useEffect, useState } from 'react';
-// import { objectParser } from 'src/utils/parser/objectParser';
 
 export function ResponseSection() {
   const { isPlay } = useAppSelector((state) => state.response);
@@ -16,22 +15,10 @@ export function ResponseSection() {
       if (isPlay) {
         try {
           const res = await getQuery({
-            // newQuery: `query ($id: Int){
-            //   Media (id: $id, type: ANIME){
-            //     title {
-            //       romaji
-            //       english
-            //       native
-            //       userPreferred
-            //     }
-            //   }
-            //   }`,
-            // newVariables: `{"id": 1222}`,
             newQuery: query,
             newVariables: variables,
           });
           if ('data' in res) {
-            // objectParser(res.data);
             setData(JSON.stringify(res.data, null, 2));
           } else if ('error' in res) {
             setData(JSON.stringify(res.error, null, 2));
