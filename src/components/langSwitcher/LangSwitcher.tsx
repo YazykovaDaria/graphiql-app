@@ -26,7 +26,7 @@ export function LangSwitcher() {
   };
 
   return (
-    <IconButton onClick={switchLang}>
+    <IconButton onClick={switchLang} data-testid='lng-button'>
       <Avatar
         data-testid={`lng-${locale}`}
         variant='rounded'
