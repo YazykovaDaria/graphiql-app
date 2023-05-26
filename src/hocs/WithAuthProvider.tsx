@@ -14,7 +14,7 @@ interface IAuthProvider {
   children?: React.ReactElement | string;
 }
 
-export function AuthProvider({ children = '' }: IAuthProvider) {
+export function WithAuthProvider({ children = '' }: IAuthProvider) {
   const [user, setUser] = useState<User | null>(null);
   const [checked, setChecked] = useState(false);
 

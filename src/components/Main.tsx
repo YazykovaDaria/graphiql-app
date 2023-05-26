@@ -1,4 +1,4 @@
-import { Container } from '@mui/material';
+import { Container, Toolbar } from '@mui/material';
 
 interface IMainProps {
   children: React.ReactNode;
@@ -6,7 +6,8 @@ interface IMainProps {
 
 export function Main({ children }: IMainProps) {
   return (
-    <Container component='main' sx={{ flexGrow: 1 }}>
+    <Container component='main' sx={{ minHeight: 'calc(100vh - 9rem)' }}>
+      <Toolbar />
       {children}
     </Container>
   );

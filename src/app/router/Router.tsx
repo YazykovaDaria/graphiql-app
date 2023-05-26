@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 // import { AuthProvider } from '../../hocs/AuthProvider';
 import Layout from '../../layouts/Layout';
-import { RequireAuth } from '../../hocs/RequireAuth';
+import { WithRequireAuth } from '../../hocs/WithRequireAuth';
 
 import * as pages from '../../pages';
 
@@ -15,9 +15,9 @@ export function Router() {
         <Route
           path='main'
           element={
-            <RequireAuth>
+            <WithRequireAuth>
               <MainPage />
-            </RequireAuth>
+            </WithRequireAuth>
           }
         />
         <Route path='sign-up' element={<SignUpPage />} />

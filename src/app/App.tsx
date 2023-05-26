@@ -1,13 +1,13 @@
 import { BrowserRouter } from 'react-router-dom';
 import { Router } from './router/Router';
-import { AuthProvider } from '../hocs/AuthProvider';
+import { WithAuthProvider } from '../hocs/WithAuthProvider';
 
 export function App() {
   return (
-    <AuthProvider>
+    <WithAuthProvider>
       <BrowserRouter>
         <Router />
       </BrowserRouter>
-    </AuthProvider>
+    </WithAuthProvider>
   );
 }

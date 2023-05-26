@@ -9,7 +9,7 @@ interface IRequireAuth {
   children: React.ReactElement;
 }
 
-export function RequireAuth({ children }: IRequireAuth) {
+export function WithRequireAuth({ children }: IRequireAuth) {
   const location = useLocation();
 
   const { email, checked } = useAuth();
