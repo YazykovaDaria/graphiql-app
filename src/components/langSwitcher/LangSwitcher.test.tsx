@@ -42,7 +42,7 @@ describe('LangSwitcher', () => {
 
     screen.getByTestId(`lng-${defaultLang}`);
 
-    userEvent.click(button);
+    await userEvent.click(button);
 
     screen.getByTestId(`lng-${nextLang}`);
   });

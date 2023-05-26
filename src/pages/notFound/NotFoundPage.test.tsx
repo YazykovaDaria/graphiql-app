@@ -3,7 +3,6 @@ import { render, screen } from '@testing-library/react';
 import { NotFoundPage } from './NotFoundPage';
 
 describe('Not found page', () => {
-  /*
   it('render title', () => {
     render(<NotFoundPage />);
     expect(
@@ -12,5 +11,4 @@ describe('Not found page', () => {
       })
     ).toHaveTextContent('Page not found');
   });
-  */
 });
