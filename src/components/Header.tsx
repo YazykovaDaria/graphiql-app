@@ -1,7 +1,7 @@
-import { AppBar, Typography, Toolbar, Box, Slide, Container } from '@mui/material';
+import { AppBar, Typography, Toolbar, Box } from '@mui/material';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import { useTranslation } from 'react-i18next';
-import { createContext } from 'react';
+
 import { Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { LangSwitcher } from './langSwitcher/LangSwitcher';
