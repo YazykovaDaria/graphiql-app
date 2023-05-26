@@ -2,6 +2,7 @@ import { useAppDispatch, useAppSelector } from 'src/hooks/reduxHooks';
 import { togglePlay } from 'src/store/slices/responseSectionSlice';
 import { useGetGraphQueryMutation } from 'src/store/api/graphQueryApi';
 import { useEffect, useState } from 'react';
+import { useSnackbar } from 'notistack';
 
 export function ResponseSection() {
   const { isPlay } = useAppSelector((state) => state.response);
@@ -9,6 +10,7 @@ export function ResponseSection() {
   const dispatch = useAppDispatch();
   const { query, variables } = useAppSelector((state) => state.editor);
   const [data, setData] = useState('');
+  const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     const run = async () => {
@@ -24,7 +26,7 @@ export function ResponseSection() {
             setData(JSON.stringify(res.error, null, 2));
           }
         } catch (err) {
-          console.log(`Add error handing in response component. Error - ${err}`);
+          enqueueSnackbar(`${err}`, { variant: 'error' });
         } finally {
           dispatch(togglePlay(false));
         }
