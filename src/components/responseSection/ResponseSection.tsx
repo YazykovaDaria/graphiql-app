@@ -3,6 +3,7 @@ import { togglePlay } from 'src/store/slices/responseSectionSlice';
 import { useGetGraphQueryMutation } from 'src/store/api/graphQueryApi';
 import { useEffect, useState } from 'react';
 import { useSnackbar } from 'notistack';
+import { useTranslation } from 'react-i18next';
 
 export function ResponseSection() {
   const { isPlay } = useAppSelector((state) => state.response);
@@ -11,6 +12,7 @@ export function ResponseSection() {
   const { query, variables } = useAppSelector((state) => state.editor);
   const [data, setData] = useState('');
   const { enqueueSnackbar } = useSnackbar();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const run = async () => {
@@ -23,7 +25,11 @@ export function ResponseSection() {
           if ('data' in res) {
             setData(JSON.stringify(res.data, null, 2));
           } else if ('error' in res) {
-            setData(JSON.stringify(res.error, null, 2));
+            if ('status' in res.error) {
+              if (res.error.status === 400) {
+                setData(JSON.stringify(res.error, null, 2));
+              } else enqueueSnackbar(t('main.networkError'), { variant: 'error' });
+            }
           }
         } catch (err) {
           enqueueSnackbar(`${err}`, { variant: 'error' });

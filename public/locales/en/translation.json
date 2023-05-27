@@ -11,8 +11,8 @@
     "sign-up-link": "Don't have an account? Sign Up"
   },
   "main": {
-    "title": "This is the main page",
     "editorPlaceholder": "Welcome to GraphiQL\n\nGraphiQL is an in-browser tool for writing, validating, and testing GraphQL queries.\n\nAn example GraphQL query might look like:\n  {\n      field arg: \"value\") {\n        subField\n      }\n  }\n\nType your queries into this side of the screen \n\nDefault endpoint is an instance of https://graphql.anilist.co",
-    "variables": "variables"
+    "variables": "variables",
+    "networkError": "Network error"
       }
 }
