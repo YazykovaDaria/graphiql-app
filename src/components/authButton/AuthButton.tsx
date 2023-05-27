@@ -3,15 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { LoadingButton } from '@mui/lab';
 import { auth } from 'src/utils/firebase/firebase';
-import { Typography } from '@mui/material';
 
 type AuthButtonProps = {
   title: string;
   link: 'sign-in' | 'sign-up';
-  isLogout: boolean;
+  isLogout?: boolean;
 };
 
-export function AuthButton({ title, link, isLogout }: AuthButtonProps) {
+export function AuthButton({ title, link, isLogout = false }: AuthButtonProps) {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -27,10 +26,8 @@ export function AuthButton({ title, link, isLogout }: AuthButtonProps) {
   };
 
   return (
-    <LoadingButton loading={isLoading} onClick={handleClick}>
-      <Typography color='white' zIndex={3}>
-        {title}
-      </Typography>
+    <LoadingButton loading={isLoading} onClick={handleClick} color='inherit'>
+      <span>{title}</span>
     </LoadingButton>
   );
 }

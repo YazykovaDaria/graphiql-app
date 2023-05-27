@@ -1,15 +1,8 @@
 {
-  "header":{
-    "authorization-button":{
-      "log-in": "Login",
-      "log-out": "Logout"
-    },
-    "register-button": "Register",
-    "theme-button": "Theme"
-  },
   "auth": {
     "sign-in": "Sign in",
     "sign-up": "Sign up",
+    "logout": "Logout",
     "email-pattern-error": "Please provide a correct email address",
     "email-label": "Email Address",
     "password-pattern-error": "Password should contain at least one uppercase letter, one lowercase letter and one number",
@@ -22,7 +15,7 @@
     "editorPlaceholder": "Welcome to GraphiQL\n\nGraphiQL is an in-browser tool for writing, validating, and testing GraphQL queries.\n\nAn example GraphQL query might look like:\n  {\n      field arg: \"value\") {\n        subField\n      }\n  }\n\nType your queries into this side of the screen \n\nDefault endpoint is an instance of https://graphql.anilist.co",
     "variables": "variables",
     "networkError": "Network error"
-      },
+  },
   "hello": {
     "button-to-main": {
       "log-in": "Login",
@@ -41,15 +34,15 @@
     "advantages": {
       "title": "For what",
       "needed": {
-        "title" : "Ask for what you need,get exactly that",
+        "title": "Ask for what you need,get exactly that",
         "description": "Send a GraphQL query to your API and get exactly what you need, nothing more and nothing less. GraphQL queries always return predictable results. Apps using GraphQL are fast and stable because they control the data they get, not the server."
       },
       "single": {
-        "title" : "Get many resources in a single request",
+        "title": "Get many resources in a single request",
         "description": "GraphQL queries access not just the properties of one resource but also smoothly follow references between them. While typical REST APIs require loading from multiple URLs, GraphQL APIs get all the data your app needs in a single request. Apps using GraphQL can be quick even on slow mobile network connections."
       },
       "types": {
-        "title" : "Describe what’s possible with a type system",
+        "title": "Describe what’s possible with a type system",
         "description": "GraphQL APIs are organized in terms of types and fields, not endpoints. Access the full capabilities of your data from a single endpoint. GraphQL uses types to ensure Apps only ask for what’s possible and provide clear and helpful errors. Apps can use types to avoid writing manual parsing code."
       }
     }

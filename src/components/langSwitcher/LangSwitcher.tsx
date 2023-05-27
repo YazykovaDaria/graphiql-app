@@ -1,42 +1,20 @@
-import flagEn from 'src/assets/img/united-kingdom.png';
-import flagRu from 'src/assets/img/russia.png';
-
 import { useTranslation } from 'react-i18next';
-import { Avatar, IconButton } from '@mui/material';
-
-type Locale = {
-  img: string;
-};
-
-type Locales = Record<string, Locale>;
-
-export const locales: Locales = {
-  en: { img: flagEn },
-  ru: { img: flagRu },
-};
+import { IconButton } from '@mui/material';
 
 export function LangSwitcher() {
   const { i18n } = useTranslation();
-
-  let locale = i18n.resolvedLanguage;
+  const locale = i18n.resolvedLanguage;
 
   const switchLang = () => {
-    locale = locale !== 'en' ? 'en' : 'ru';
-    i18n.changeLanguage(locale);
+    i18n.changeLanguage(locale !== 'en' ? 'en' : 'ru');
   };
 
   return (
-    <IconButton onClick={switchLang} data-testid='lng-button'>
-      <Avatar
-        data-testid={`lng-${locale}`}
-        variant='rounded'
-        alt={`flag ${locale}`}
-        src={locales[locale].img}
-        sx={{
-          width: { xs: '25px', md: '50px' },
-          height: { xs: '20px', md: '40px' },
-        }}
-      />
+    <IconButton
+      onClick={switchLang}
+      sx={{ width: 40, height: 40, fontSize: '0.875rem', textTransform: 'uppercase' }}
+    >
+      {locale}
     </IconButton>
   );
 }
