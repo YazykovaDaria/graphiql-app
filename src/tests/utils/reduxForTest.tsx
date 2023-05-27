@@ -20,6 +20,7 @@ function renderWithProviders(
     ...renderOptions
   }: ExtendedRenderOptions = {}
 ) {
+  // eslint-disable-next-line react/require-default-props
   function Wrapper({ children }: PropsWithChildren<object>): JSX.Element {
     return (
       <Provider store={store}>
