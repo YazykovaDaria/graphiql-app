@@ -1,38 +1,10 @@
-import { useGetGraphQueryMutation } from 'src/store/api/graphQueryApi';
-import { useEffect } from 'react';
+import { useAppSelector } from 'src/hooks/reduxHooks';
+import { Docs } from './Docs';
 
 export function DocsExplorer() {
-  const [getDocs] = useGetGraphQueryMutation();
+  const { scheema } = useAppSelector((state) => state.docs);
+  const { data } = scheema;
+  // console.log(data);
 
-  useEffect(() => {
-    const run = async () => {
-      const docs = await getDocs({
-        newQuery: `query {
-          __schema{
-        queryType{
-          kind
-          name
-          description
-          fields {
-            name
-            description
-            args {
-              description
-              defaultValue
-            }
-            type {
-              name
-              description
-            }
-          }
-        }
-          }
-        }`,
-      });
-      alert(JSON.stringify(docs));
-    };
-    run();
-  }, [getDocs]);
-
-  return <p>Docs</p>;
+  return <div>{data ? <Docs /> : <p>data not found</p>}</div>;
 }
