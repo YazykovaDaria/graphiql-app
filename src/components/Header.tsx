@@ -57,14 +57,3 @@ export function Header() {
     </AppBar>
   );
 }
-
-/*
-          <IconButton sx={{ borderRadius: 2, color: 'inherit', columnGap: '5px' }}>
-            <Typography sx={{ display: { xs: 'none', md: 'block' } }}>
-              {t('header.theme-button')}
-            </Typography>
-            <WbSunny />
-          </IconButton>
-
-          26.052023 дожидается редакса или потом удалим
-*/
