@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { LoadingButton } from '@mui/lab';
 import { auth } from 'src/utils/firebase/firebase';
+import { Typography } from '@mui/material';
 
 type AuthButtonProps = {
   title: string;
@@ -27,7 +28,9 @@ export function AuthButton({ title, link, isLogout }: AuthButtonProps) {
 
   return (
     <LoadingButton loading={isLoading} onClick={handleClick}>
-      <span>{title}</span>
+      <Typography color='white' zIndex={3}>
+        {title}
+      </Typography>
     </LoadingButton>
   );
 }

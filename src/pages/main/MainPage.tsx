@@ -1,15 +1,15 @@
 import { useTranslation } from 'react-i18next';
 import { LangSwitcher } from 'src/components/langSwitcher/LangSwitcher';
+import { Section } from '../../components/Section/Section';
 
-// it's just example, delete it if you need
 export function MainPage() {
   const { t } = useTranslation();
+
   return (
-    <div>
+    <Section name='Hello Page'>
       <LangSwitcher />
       <p>{t('main.title')}</p>
       <p>{t('main.test')}</p>
-      <p>Main page</p>
-    </div>
+    </Section>
   );
 }

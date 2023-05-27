@@ -1,47 +1,41 @@
-import { render, screen, fireEvent, within } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import i18n from 'src/i18next/i18nForTests';
+
+import { I18nextProvider } from 'react-i18next';
 import userEvent from '@testing-library/user-event';
-import { vi } from 'vitest';
 import { LangSwitcher, locales } from './LangSwitcher';
 
 const languages = Object.keys(locales);
 const [defaultLang, nextLang] = languages;
 
 describe('LangSwitcher', () => {
-  beforeAll(() => {
-    vi.mock('react-i18next', () => ({
-      useTranslation: () => {
-        return {
-          t: (str: string) => str,
-          i18n: {
-            changeLanguage: () => new Promise(() => {}),
-            resolvedLanguage: defaultLang,
-          },
-        };
-      },
-      initReactI18next: {
-        type: '3rdParty',
-        init: () => {},
-      },
-    }));
-  });
-
   test('renders the default language', () => {
-    render(<LangSwitcher />);
-    const img = screen.getByRole('img');
+    render(
+      <I18nextProvider i18n={i18n}>
+        <LangSwitcher />
+      </I18nextProvider>
+    );
+    screen.getByRole<HTMLButtonElement>('button');
+    const img = screen.getByRole<HTMLImageElement>('img');
+
     const src = locales[defaultLang].img;
     expect(img).toHaveAttribute('src', src);
     expect(img).toBeVisible();
   });
 
   test('changes the language when a new language is selected', async () => {
-    render(<LangSwitcher />);
-    fireEvent.mouseDown(screen.getByRole('button'));
-    const selectLng = screen.getByTestId(`lng-${nextLang}`);
+    render(
+      <I18nextProvider i18n={i18n}>
+        <LangSwitcher />
+      </I18nextProvider>
+    );
 
-    userEvent.click(selectLng);
-    const img = await within(selectLng).findByRole('img');
-    const src = locales[nextLang].img;
-    expect(img).toHaveAttribute('src', src);
-    expect(img).toBeVisible();
+    const button = screen.getByTestId('lng-button');
+
+    screen.getByTestId(`lng-${defaultLang}`);
+
+    await userEvent.click(button);
+
+    await screen.findByTestId(`lng-${nextLang}`);
   });
 });

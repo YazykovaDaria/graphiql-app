@@ -1,7 +1,8 @@
 import flagEn from 'src/assets/img/united-kingdom.png';
 import flagRu from 'src/assets/img/russia.png';
+
 import { useTranslation } from 'react-i18next';
-import { Select, MenuItem, Avatar, SelectChangeEvent } from '@mui/material';
+import { Avatar, IconButton } from '@mui/material';
 
 type Locale = {
   img: string;
@@ -16,40 +17,26 @@ export const locales: Locales = {
 
 export function LangSwitcher() {
   const { i18n } = useTranslation();
-  const defaultLang = i18n.resolvedLanguage;
 
-  const switchLang = (e: SelectChangeEvent) => {
-    const lang = e.target.value;
-    i18n.changeLanguage(lang);
+  let locale = i18n.resolvedLanguage;
+
+  const switchLang = () => {
+    locale = locale !== 'en' ? 'en' : 'ru';
+    i18n.changeLanguage(locale);
   };
 
   return (
-    <Select
-      value={defaultLang}
-      onChange={switchLang}
-      size='small'
-      sx={{
-        '& .MuiSelect-select': {
-          py: 0,
-          px: 1,
-        },
-      }}
-      data-testid='switch-lng'
-    >
-      {Object.keys(locales).map((locale) => (
-        <MenuItem value={locale} key={locale}>
-          <Avatar
-            data-testid={`lng-${locale}`}
-            variant='rounded'
-            alt={`flag ${locale}`}
-            src={locales[locale].img}
-            style={{
-              width: 50,
-              height: 50,
-            }}
-          />
-        </MenuItem>
-      ))}
-    </Select>
+    <IconButton onClick={switchLang} data-testid='lng-button'>
+      <Avatar
+        data-testid={`lng-${locale}`}
+        variant='rounded'
+        alt={`flag ${locale}`}
+        src={locales[locale].img}
+        sx={{
+          width: { xs: '25px', md: '50px' },
+          height: { xs: '20px', md: '40px' },
+        }}
+      />
+    </IconButton>
   );
 }

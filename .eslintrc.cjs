@@ -32,6 +32,13 @@ module.exports = {
       'error',
       { allowTestingFrameworkSetupHook: 'beforeEach' },
     ],
+    'react/require-default-props': [
+      'error',
+      {
+        forbidDefaultForRequired: true,
+        functions: 'defaultArguments',
+      },
+    ],
   },
   ignorePatterns: ['dist/**/*'],
 };
