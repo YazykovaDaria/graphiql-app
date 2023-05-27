@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const baseUrl = 'https://graphql.anilist.co';
+const baseUrl = 'https://rickandmortyapi.com/graphql';
 
 type QueryArgs = {
   newQuery: string;
