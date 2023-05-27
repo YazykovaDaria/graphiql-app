@@ -27,6 +27,7 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 'off',
     'import/prefer-default-export': 'off',
+    'no-param-reassign': ['error', { props: false }],
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'testing-library/no-render-in-setup': [
       'error',
