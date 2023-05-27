@@ -1,8 +1,8 @@
-import { AppBar, Typography, Toolbar, Box } from '@mui/material';
+import { AppBar, Typography, Toolbar, Box, Link } from '@mui/material';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import { useTranslation } from 'react-i18next';
 
-import { Link } from 'react-router-dom';
+import { Link as NavLink } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { LangSwitcher } from './langSwitcher/LangSwitcher';
 import { AuthButton } from './authButton/AuthButton';
@@ -21,11 +21,29 @@ export function Header() {
         id='back-to-top-anchor'
         style={{ minHeight: '3rem', height: '100%' }}
       >
-        <Link to='/' style={{ fontSize: 'inherit', color: 'inherit', textDecoration: 'none' }}>
+        <NavLink to='/' style={{ fontSize: 'inherit', color: 'inherit', textDecoration: 'none' }}>
           <Typography component='h1'>RS React GraphQL</Typography>
-        </Link>
+        </NavLink>
+
         <Box flexGrow={1} />
         <LangSwitcher />
+        {checked && !email ? (
+          <Link
+            component={NavLink}
+            to='/sign-up'
+            sx={{
+              textDecoration: 'none',
+              color: 'white',
+              backgroundColor: 'rgb(25, 118, 210)',
+              padding: '20px',
+              borderRadius: '10px',
+            }}
+          >
+            {t('header.register-button').toUpperCase()}
+          </Link>
+        ) : (
+          ''
+        )}
         <AuthButton
           title={`${
             email && checked

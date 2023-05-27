@@ -4,6 +4,7 @@
       "log-in": "Login",
       "log-out": "Logout"
     },
+    "register-button": "Register",
     "theme-button": "Theme"
   },
   "auth": {

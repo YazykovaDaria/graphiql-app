@@ -4,6 +4,7 @@
       "log-in": "Авторизоваться",
       "log-out": "Выйти"
     },
+    "register-button": "Зарегистрироваться",
     "theme-button": "Тема"
   },
   "auth": {

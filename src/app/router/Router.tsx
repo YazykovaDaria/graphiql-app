@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router-dom';
-// import { AuthProvider } from '../../hocs/AuthProvider';
 import Layout from '../../layouts/Layout';
 import { WithRequireAuth } from '../../hocs/WithRequireAuth';
 
