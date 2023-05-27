@@ -1,7 +1,6 @@
 import { useGetGraphQueryMutation } from 'src/store/api/graphQueryApi';
 import { useEffect } from 'react';
-// костя, это просто пример запроса, я не уверена что тут есть все нужные данные, смотри нужную схему в документашке апи
-// и с типизацией ответа сервака я пока не разобралась
+
 export function DocsExplorer() {
   const [getDocs] = useGetGraphQueryMutation();
 
@@ -30,7 +29,7 @@ export function DocsExplorer() {
           }
         }`,
       });
-      console.log(docs);
+      alert(JSON.stringify(docs));
     };
     run();
   }, [getDocs]);
