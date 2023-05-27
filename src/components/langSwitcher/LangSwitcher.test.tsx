@@ -1,30 +1,20 @@
 import { render, screen } from '@testing-library/react';
+import i18n from 'src/i18next/i18nForTests';
 
-import { vi } from 'vitest';
+import { I18nextProvider } from 'react-i18next';
+import userEvent from '@testing-library/user-event';
 import { LangSwitcher, locales } from './LangSwitcher';
 
 const languages = Object.keys(locales);
-const [defaultLang] = languages;
-
-vi.mock('react-i18next', () => ({
-  useTranslation: () => {
-    return {
-      t: (str: string) => str,
-      i18n: {
-        resolvedLanguage: defaultLang,
-        changeLanguage: () => new Promise(() => {}),
-      },
-    };
-  },
-  initReactI18next: {
-    type: '3rdParty',
-    init: () => {},
-  },
-}));
+const [defaultLang, nextLang] = languages;
 
 describe('LangSwitcher', () => {
   test('renders the default language', () => {
-    render(<LangSwitcher />);
+    render(
+      <I18nextProvider i18n={i18n}>
+        <LangSwitcher />
+      </I18nextProvider>
+    );
     screen.getByRole<HTMLButtonElement>('button');
     const img = screen.getByRole<HTMLImageElement>('img');
 
@@ -32,9 +22,13 @@ describe('LangSwitcher', () => {
     expect(img).toHaveAttribute('src', src);
     expect(img).toBeVisible();
   });
-  /*
+
   test('changes the language when a new language is selected', async () => {
-    render(<LangSwitcher />);
+    render(
+      <I18nextProvider i18n={i18n}>
+        <LangSwitcher />
+      </I18nextProvider>
+    );
 
     const button = screen.getByTestId('lng-button');
 
@@ -44,6 +38,4 @@ describe('LangSwitcher', () => {
 
     await screen.findByTestId(`lng-${nextLang}`);
   });
-  */
-  // 27.05.2023 this test fails because the mock does not change the locale
 });
