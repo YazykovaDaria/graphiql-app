@@ -70,7 +70,13 @@ export function MainPage() {
         </Grid>
       </Grid>
 
-      <Grid item xs={12} sm={6} component='section' sx={{ position: 'relative' }}>
+      <Grid
+        item
+        xs={12}
+        sm={6}
+        component='section'
+        sx={{ position: 'relative', minHeight: '100%' }}
+      >
         <ResponseSection />
         <DocsExplorer />
       </Grid>
