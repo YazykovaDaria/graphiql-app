@@ -17,7 +17,7 @@ export function DocsExplorer() {
         top: '0',
         right: '0%',
         transition: '0.4s',
-        transform: isOpen ? `translate${translateDir}(200%)` : `translate${translateDir}(5px)`,
+        transform: isOpen ? `translate${translateDir}(5px)` : `translate${translateDir}(200%)`,
         height: '100%',
         backgroundColor: 'white',
         zIndex: 2,
