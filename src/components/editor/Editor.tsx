@@ -4,6 +4,7 @@ import { updateQuery } from 'src/store/slices/editorSlice';
 import { TextField, Box } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useAutoComplete } from 'src/hooks/useAutoComplete';
+import { useTheme } from '@emotion/react';
 import { Variables } from '../variablesSection/Variables';
 
 export function Editor() {
@@ -17,6 +18,8 @@ export function Editor() {
     dispatch(updateQuery(value.trim()));
   };
 
+  const theme = useTheme();
+
   return (
     <Box
       sx={{
@@ -24,13 +27,13 @@ export function Editor() {
         flexDirection: 'column',
         justifyContent: 'space-between',
         width: '100%',
-        height: '100%',
+        minHeight: '100%',
       }}
       component='form'
       name='editor'
     >
       <TextField
-        sx={{ width: '100%', '& fieldset': { border: 'none' } }}
+        sx={{ width: '100%', '& fieldset': { border: 'none' }, flexGrow: 1 }}
         onBlur={handleBlur}
         placeholder={t('main.editorPlaceholder') as string}
         multiline

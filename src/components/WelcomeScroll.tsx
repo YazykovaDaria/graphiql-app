@@ -5,6 +5,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export function WelcomeScroll() {
   const { t } = useTranslation();
+
   const theme = useTheme();
 
   return (
