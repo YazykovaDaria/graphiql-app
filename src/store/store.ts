@@ -1,11 +1,13 @@
 import { combineReducers, configureStore, PreloadedState } from '@reduxjs/toolkit';
 import editorReducer from './slices/editorSlice';
 import responseReducer from './slices/responseSectionSlice';
+import docsReducer from './slices/docsSlice';
 import { graphQueryApi } from './api/graphQueryApi';
 
 const rootReducer = combineReducers({
   editor: editorReducer,
   response: responseReducer,
+  docs: docsReducer,
   [graphQueryApi.reducerPath]: graphQueryApi.reducer,
 });
 export function setupStore(preloadedState?: PreloadedState<RootState>) {
