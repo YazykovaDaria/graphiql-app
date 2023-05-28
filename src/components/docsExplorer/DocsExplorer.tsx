@@ -1,5 +1,5 @@
 import { useAppSelector } from 'src/hooks/reduxHooks';
-import { Container, useMediaQuery } from '@mui/material';
+import { Container, useMediaQuery, useTheme } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { DocsRouter } from './DocsRouter';
 
@@ -9,6 +9,12 @@ export function DocsExplorer() {
   const { t } = useTranslation();
 
   const query = useMediaQuery('(min-width:600px)');
+
+  const {
+    palette: { mode },
+  } = useTheme();
+
+  const light = mode === 'light';
 
   const translateDir = query ? 'X' : 'Y';
 
@@ -23,7 +29,7 @@ export function DocsExplorer() {
         height: '100%',
         backgroundColor: 'white',
         zIndex: 2,
-        background: '#ECFFE2',
+        background: light ? '#EBEBEB' : '#1D1D1D',
         borderRadius: '10px',
         overflowY: 'scroll',
       }}
