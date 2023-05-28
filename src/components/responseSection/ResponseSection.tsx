@@ -33,7 +33,7 @@ export function ResponseSection() {
             }
           }
         } catch (err) {
-          enqueueSnackbar(`${err}`, { variant: 'error' });
+          throw new Error((err as Error).message);
         } finally {
           dispatch(togglePlay(false));
         }
