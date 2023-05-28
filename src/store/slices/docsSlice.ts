@@ -29,8 +29,8 @@ const docsSlice = createSlice({
   name: 'docsSlice',
   initialState,
   reducers: {
-    toggleOpen(state, action: PayloadAction<boolean>) {
-      state.isOpen = action.payload;
+    toggleOpen(state) {
+      state.isOpen = !state.isOpen;
     },
     addScheema(state, action: PayloadAction<Scheema>) {
       state.scheema = action.payload;
