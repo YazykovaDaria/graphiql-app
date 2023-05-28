@@ -4,7 +4,6 @@ import { updateQuery } from 'src/store/slices/editorSlice';
 import { TextField, Box } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useAutoComplete } from 'src/hooks/useAutoComplete';
-import { useTheme } from '@emotion/react';
 import { Variables } from '../variablesSection/Variables';
 
 export function Editor() {
@@ -17,8 +16,6 @@ export function Editor() {
   const handleBlur = () => {
     dispatch(updateQuery(value.trim()));
   };
-
-  const theme = useTheme();
 
   return (
     <Box
