@@ -9,8 +9,7 @@ type Props = {
   name?: string;
 };
 
-// eslint-disable-next-line react/require-default-props
-export function FieldTypeLink({ types, name }: Props) {
+export function FieldTypeLink({ types, name = '' }: Props) {
   const dispatch = useAppDispatch();
   const clickHandler = (typeName: string) => dispatch(addRout(typeName));
 
