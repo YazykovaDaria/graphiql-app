@@ -96,7 +96,7 @@ export function AuthForm({ title, link, authSubmit }: FormData) {
               rules={{
                 required: true,
                 pattern: {
-                  value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
+                  value: /^(?=.*[a-zA-Z])(?=.*\d)(?=.*\W).*$/,
                   message: t('auth.password-pattern-error'),
                 },
                 minLength: {

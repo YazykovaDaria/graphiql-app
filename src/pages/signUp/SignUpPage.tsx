@@ -24,6 +24,7 @@ export function SignUpPage() {
   return (
     <Container
       component='main'
+      maxWidth='xs'
       sx={{
         display: 'flex',
         alignItems: 'center',
