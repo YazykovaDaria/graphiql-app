@@ -11,7 +11,7 @@ type ResponseSliceState = {
 export const mainRout = 'Query';
 
 const initialState: ResponseSliceState = {
-  isOpen: true,
+  isOpen: false,
   scheema: {},
   rout: [mainRout],
 };
