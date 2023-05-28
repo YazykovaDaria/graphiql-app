@@ -35,7 +35,6 @@
     "vite-plugin-svgr": "^2.4.0"
   },
   "devDependencies": {
-    "@esbuild/linux-x64": "^0.17.18",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
@@ -61,6 +60,7 @@
     "jsdom": "^22.0.0",
     "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
+    "react-firebase-hooks": "^5.1.1",
     "typescript": "^5.0.4",
     "vite": "^4.3.4",
     "vite-plugin-checker": "^0.6.0",
