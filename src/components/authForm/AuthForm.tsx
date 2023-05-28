@@ -2,10 +2,12 @@ import { useState } from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
+import { enqueueSnackbar } from 'notistack';
 import { Box, Avatar, Typography, Grid, TextField, Link } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import type { AuthFormInputs } from 'src/types/AuthFormInputs';
+import { FirebaseError } from 'firebase/app';
 
 type FormData = {
   title: string;
@@ -29,13 +31,15 @@ export function AuthForm({ title, link, authSubmit }: FormData) {
     try {
       setIsSubmitting(true);
       await authSubmit({ email, password });
+      enqueueSnackbar(t('auth.success'), { variant: 'success' });
       const navTimeout = setTimeout(() => {
         reset();
         navigate('/main');
         clearTimeout(navTimeout);
       }, 3000);
     } catch (error) {
-      throw new Error(`${error}`);
+      const typedError = error as FirebaseError;
+      enqueueSnackbar(`${typedError.code}`, { variant: 'error' });
     } finally {
       setIsSubmitting(false);
     }

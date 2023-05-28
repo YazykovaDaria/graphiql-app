@@ -9,7 +9,8 @@
     "password-min-length-error": "Password cannot be under 8 symbols",
     "password-label": "Password",
     "sign-in-link": "Already have an account? Sign in",
-    "sign-up-link": "Don't have an account? Sign Up"
+    "sign-up-link": "Don't have an account? Sign Up",
+    "success": "Successful login"
   },
   "layout": {
     "no-page-error": "The page you are looking for does not exist"

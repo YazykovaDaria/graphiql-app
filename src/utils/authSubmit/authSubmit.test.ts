@@ -8,7 +8,7 @@ describe('authSubmit', () => {
       isSignIn: false,
       email: 'test@gmail.com',
       password: 'test_user',
-    })) as FirebaseError;
+    })) as unknown as FirebaseError;
     expect(data.code).toMatch('auth/email-already-in-use');
   });
 

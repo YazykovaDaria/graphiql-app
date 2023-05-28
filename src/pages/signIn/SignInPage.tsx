@@ -1,9 +1,9 @@
+import { Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Container, Typography } from '@mui/material';
 import { AuthForm } from 'src/components/authForm/AuthForm';
 import { authSubmit } from 'src/utils/authSubmit/authSubmit';
 import { AuthFormInputs } from 'src/types/AuthFormInputs';
-import { Navigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 
 export function SignInPage() {

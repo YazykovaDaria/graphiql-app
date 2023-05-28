@@ -34,9 +34,7 @@ export function Header() {
             </Grid>
             <Grid item>
               <AuthButton
-                title={
-                  email && checked ? t('header.authorization-button.log-out') : t('auth.sign-in')
-                }
+                title={email && checked ? t('auth.logout') : t('auth.sign-in')}
                 isLogout={!!email}
                 link='sign-in'
               />

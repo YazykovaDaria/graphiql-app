@@ -1,4 +1,3 @@
-import { FirebaseError } from 'firebase/app';
 import {
   setPersistence,
   browserLocalPersistence,
@@ -14,18 +13,14 @@ export interface AuthSubmit extends AuthFormInputs {
 }
 
 export const authSubmit = async ({ isSignIn, email, password }: AuthSubmit) => {
-  try {
-    let user: User;
+  let user: User;
 
-    await setPersistence(auth, browserLocalPersistence);
-    if (isSignIn) {
-      user = (await signInWithEmailAndPassword(auth, email, password)).user;
-    } else {
-      user = (await createUserWithEmailAndPassword(auth, email, password)).user;
-    }
-
-    return user;
-  } catch (error) {
-    return error as FirebaseError;
+  await setPersistence(auth, browserLocalPersistence);
+  if (isSignIn) {
+    user = (await signInWithEmailAndPassword(auth, email, password)).user;
+  } else {
+    user = (await createUserWithEmailAndPassword(auth, email, password)).user;
   }
+
+  return user;
 };
