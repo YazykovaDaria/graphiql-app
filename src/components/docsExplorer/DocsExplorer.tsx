@@ -1,10 +1,12 @@
 import { useAppSelector } from 'src/hooks/reduxHooks';
 import { Container, useMediaQuery } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import { DocsRouter } from './DocsRouter';
 
 export function DocsExplorer() {
   const { scheema, isOpen } = useAppSelector((state) => state.docs);
   const { data } = scheema;
+  const { t } = useTranslation();
 
   const query = useMediaQuery('(min-width:600px)');
 
@@ -26,8 +28,7 @@ export function DocsExplorer() {
         overflowY: 'scroll',
       }}
     >
-      <Container />
-      {data ? <DocsRouter /> : <p>data not found</p>}
+      {data ? <DocsRouter /> : <p>{t('main.notDocs')}</p>}
     </Container>
   );
 }

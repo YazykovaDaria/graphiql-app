@@ -25,10 +25,10 @@ export function MainPage() {
       try {
         const res = await getDocs({ newQuery: queryForScheema });
         if ('data' in res) {
-          dispatch(addScheema(res.data));
+          dispatch(addScheema(res));
         }
       } catch (error) {
-        throw new Error(`Fetch error - ${error}`);
+        throw new Error((error as Error).message);
       }
     };
     init();

@@ -1,36 +1,42 @@
-// import { mainRout } from 'src/store/slices/docsSlice';
-// import { Box, Typography } from '@mui/material';
-// import { BoxForArgs } from './BoxForArgs';
-// import { FieldTypeLink } from './FieldTypeLink';
+import { mainRout } from 'src/store/slices/docsSlice';
+import { Box, Typography } from '@mui/material';
+import { IGraphQlField } from 'src/types/scheema';
+import { BoxForArgs } from './BoxForArgs';
+import { FieldTypeLink } from './FieldTypeLink';
 
-// export function BoxForField({ field, rout }) {
-//   if (rout === mainRout) {
-//     return (
-//       <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-//         <Typography variant='h6'>{field.name}</Typography>
+type Props = {
+  field: IGraphQlField;
+  rout: string;
+};
 
-//         <Box sx={{ display: 'flex', gap: '5px' }}>
-//           {field.args && (
-//             <>
-//               <span>(</span>
-//               <BoxForArgs args={field.args} />
-//               <span>) :</span>
-//             </>
-//           )}
+export function BoxForField({ field, rout }: Props) {
+  if (rout === mainRout) {
+    return (
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        <Typography variant='h6'>{field.name}</Typography>
 
-//           <FieldTypeLink types={field.type} />
-//         </Box>
+        <Box sx={{ display: 'flex', gap: '5px' }}>
+          {field.args && (
+            <>
+              <span>(</span>
+              <BoxForArgs args={field.args} />
+              <span>) :</span>
+            </>
+          )}
 
-//         <Typography sx={{ color: 'green' }}>{field.description}</Typography>
-//       </Box>
-//     );
-//   }
+          {field.type && <FieldTypeLink types={field.type} />}
+        </Box>
 
-//   return (
-//     <Box sx={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
-//       <Typography variant='h6'>{field.name}</Typography>
-//       <span>:</span>
-//       <FieldTypeLink types={field.type} />
-//     </Box>
-//   );
-// }
+        <Typography sx={{ color: 'green' }}>{field.description}</Typography>
+      </Box>
+    );
+  }
+
+  return (
+    <Box sx={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
+      <Typography variant='h6'>{field.name}</Typography>
+      <span>:</span>
+      {field.type && <FieldTypeLink types={field.type} />}
+    </Box>
+  );
+}
