@@ -13,6 +13,6 @@ describe('Router', () => {
         </I18nextProvider>
       </MemoryRouter>
     );
-    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(/not found/i);
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/not exist/i);
   });
 });

@@ -4,11 +4,21 @@ import { authSubmit } from './authSubmit';
 
 describe('authSubmit', () => {
   it('returns an error if user does exist', async () => {
-    const data = (await authSubmit({
-      isSignIn: false,
-      email: 'test@gmail.com',
-      password: 'test_user',
-    })) as unknown as FirebaseError;
+    const data = {
+      code: '',
+    };
+
+    try {
+      await authSubmit({
+        isSignIn: false,
+        email: 'test@gmail.com',
+        password: 'test_user',
+      });
+    } catch (error) {
+      const typedError = error as FirebaseError;
+      data.code = typedError.code;
+    }
+
     expect(data.code).toMatch('auth/email-already-in-use');
   });
 
