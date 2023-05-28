@@ -8,7 +8,7 @@ import {
 import { AuthFormInputs } from 'src/types/AuthFormInputs';
 import { auth } from '../firebase/firebase';
 
-export interface AuthSubmit extends AuthFormInputs {
+interface AuthSubmit extends AuthFormInputs {
   isSignIn: boolean;
 }
 
