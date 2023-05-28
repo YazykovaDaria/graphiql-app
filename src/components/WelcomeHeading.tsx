@@ -13,7 +13,7 @@ export function WelcomeHeading() {
 
   return (
     <>
-      <Grid item xs={12} md={6} order={{ xs: 2, md: 1 }}>
+      <Grid item component='section' xs={12} md={6} order={{ xs: 2, md: 1 }}>
         <Stack spacing={4}>
           <Typography variant='h3' textAlign={{ xs: 'center', md: 'left' }}>
             {t('hello.heading.describe')}.

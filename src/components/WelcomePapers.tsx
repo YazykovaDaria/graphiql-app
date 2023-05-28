@@ -50,7 +50,7 @@ export function WelcomePapers() {
 
   return (
     <>
-      <Grid item xs={12} md={6} order={{ xs: 5, md: 6 }}>
+      <Grid item component='section' xs={12} md={6} order={{ xs: 5, md: 6 }}>
         <Typography variant='h4' mb={4}>
           {t('hello.advantages.needed.title')}
         </Typography>
@@ -66,7 +66,7 @@ export function WelcomePapers() {
         </Stack>
       </Grid>
 
-      <Grid item xs={12} md={6} order={{ xs: 8, md: 7 }}>
+      <Grid item component='section' xs={12} md={6} order={{ xs: 8, md: 7 }}>
         <Typography variant='h4' mb={4}>
           {t('hello.advantages.single.title')}
         </Typography>
@@ -74,7 +74,7 @@ export function WelcomePapers() {
           {t('hello.advantages.single.description')}
         </Typography>
       </Grid>
-      <Grid item xs={12} md={6} order={{ xs: 7, md: 8 }}>
+      <Grid item component='section' xs={12} md={6} order={{ xs: 7, md: 8 }}>
         <Stack alignItems='center'>
           <Prism noCopy colorScheme={theme.palette.mode} language='graphql'>
             {singleCode}
@@ -82,7 +82,7 @@ export function WelcomePapers() {
         </Stack>
       </Grid>
 
-      <Grid item xs={12} md={6} order={{ xs: 9, md: 10 }}>
+      <Grid item component='section' xs={12} md={6} order={{ xs: 9, md: 10 }}>
         <Typography variant='h4' mb={4}>
           {t('hello.advantages.types.title')}
         </Typography>

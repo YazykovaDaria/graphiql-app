@@ -8,7 +8,7 @@ export function WelcomeScroll() {
   const theme = useTheme();
 
   return (
-    <Grid item xs={12} order={3}>
+    <Grid item component='section' xs={12} order={3}>
       <ScrollElement name='scroll-anchor' />
       <Stack alignItems='stretch' spacing={4}>
         <Divider />

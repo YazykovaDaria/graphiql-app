@@ -20,7 +20,7 @@ export function WelcomePage() {
         <WelcomeHeading />
         <WelcomeScroll />
 
-        <Grid item xs={12} md={7} order={4} textAlign='center'>
+        <Grid item component='section' xs={12} md={7} order={4} textAlign='center'>
           <Stack spacing={4}>
             <Typography variant='h3'>{t('hello.info.title')}</Typography>
             <Typography variant='subtitle1' color='text.secondary'>
@@ -31,7 +31,7 @@ export function WelcomePage() {
 
         <WelcomePapers />
 
-        <Grid item xs={12} md={7} order={11} textAlign='center'>
+        <Grid item component='section' xs={12} md={7} order={11} textAlign='center'>
           <Stack spacing={4}>
             <Typography variant='h3'>RS School</Typography>
             <Typography variant='subtitle1' color='text.secondary'>

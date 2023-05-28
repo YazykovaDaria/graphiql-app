@@ -8,7 +8,7 @@ export function WelcomeAvatars() {
   const { t } = useTranslation();
 
   return (
-    <Grid item xs={12} md={7} order={11} textAlign='center'>
+    <Grid item component='section' xs={12} md={7} order={11} textAlign='center'>
       <Stack spacing={4} alignItems='center'>
         <Typography variant='h3'>{t('hello.members.title')}</Typography>
         <Stack direction='row' spacing={2}>
