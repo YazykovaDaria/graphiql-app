@@ -5,6 +5,7 @@ import { TextField, Box } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useAutoComplete } from 'src/hooks/useAutoComplete';
 import { Variables } from '../variablesSection/Variables';
+import { Headers } from '../headersSection/Headers';
 
 export function Editor() {
   const { t } = useTranslation();
@@ -42,6 +43,7 @@ export function Editor() {
         name='query'
       />
       <Variables />
+      <Headers />
     </Box>
   );
 }
