@@ -15,7 +15,7 @@ type ResponseSliceState = {
 };
 
 const initialState: ResponseSliceState = {
-  isOpen: true,
+  isOpen: false,
   scheema: {},
   rout: [
     {
