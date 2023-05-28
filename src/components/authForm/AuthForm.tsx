@@ -42,13 +42,7 @@ export function AuthForm({ title, link, authSubmit }: FormData) {
   };
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      }}
-    >
+    <Box display='flex' flexDirection='column' alignItems='center'>
       <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
         <LockOutlinedIcon />
       </Avatar>
