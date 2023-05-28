@@ -5,7 +5,7 @@
     "logout": "Logout",
     "email-pattern-error": "Please provide a correct email address",
     "email-label": "Email Address",
-    "password-pattern-error": "Password should contain  at least one letter, one digit, one special character",
+    "password-pattern-error": "Password should contain at least one letter, one digit, one special character",
     "password-min-length-error": "Password cannot be under 8 symbols",
     "password-label": "Password",
     "sign-in-link": "Already have an account? Sign in",
