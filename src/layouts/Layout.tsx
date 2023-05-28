@@ -54,7 +54,13 @@ function Layout() {
     <SnackbarProvider>
       <ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={responsiveFontSizes(theme)}>
-          <Box display='flex' flexDirection='column' minHeight='100vh'>
+          <Box
+            display='flex'
+            flexDirection='column'
+            minHeight='100vh'
+            width='100vw'
+            overflow='hidden'
+          >
             <CssBaseline enableColorScheme />
             <Header />
             <Outlet />

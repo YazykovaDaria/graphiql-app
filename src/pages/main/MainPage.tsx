@@ -42,7 +42,6 @@ export function MainPage() {
       sx={{
         p: 1,
         width: '100%',
-        borderRadius: '10px',
         background: light ? '#F0F0F0' : '#1D1D1D',
         m: 0,
         flexGrow: 1,
