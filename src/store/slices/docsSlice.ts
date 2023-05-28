@@ -1,28 +1,19 @@
-/* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type Scheema = Record<string, unknown>;
 
-type DocsRout = {
-  name: string;
-  type?: string;
-};
-
 type ResponseSliceState = {
   isOpen: boolean;
   scheema: Scheema;
-  rout: DocsRout[];
+  rout: string[];
 };
+
+export const mainRout = 'Query';
 
 const initialState: ResponseSliceState = {
   isOpen: true,
   scheema: {},
-  rout: [
-    {
-      name: 'Query',
-      type: 'main',
-    },
-  ],
+  rout: [mainRout],
 };
 
 const docsSlice = createSlice({
@@ -35,7 +26,7 @@ const docsSlice = createSlice({
     addScheema(state, action: PayloadAction<Scheema>) {
       state.scheema = action.payload;
     },
-    addRout(state, action: PayloadAction<DocsRout>) {
+    addRout(state, action: PayloadAction<string>) {
       state.rout.push(action.payload);
     },
     delRout(state) {
