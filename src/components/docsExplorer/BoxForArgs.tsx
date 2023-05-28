@@ -1,6 +1,8 @@
 // import { Typography, Box } from '@mui/material';
 
 // export function BoxForArgs({ args }) {
+// // typename переделать на тэги (убрать !)
+
 //   return (
 //     <Box sx={{ display: 'flex', gap: '10px' }}>
 //       {args.map((arg) => {
