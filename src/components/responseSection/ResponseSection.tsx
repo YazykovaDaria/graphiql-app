@@ -4,6 +4,7 @@ import { useGetGraphQueryMutation } from 'src/store/api/graphQueryApi';
 import { useEffect, useState } from 'react';
 import { useSnackbar } from 'notistack';
 import { useTranslation } from 'react-i18next';
+import { Container } from '@mui/material';
 
 export function ResponseSection() {
   const { isPlay } = useAppSelector((state) => state.response);
@@ -43,17 +44,18 @@ export function ResponseSection() {
   }, [isPlay, getQuery]);
 
   return (
-    <div>
+    <Container sx={{ height: '100%' }}>
       {data && (
         <pre
           style={{
-            whiteSpace: 'pre-line',
-            wordBreak: 'break-all',
+            minHeight: '100%',
+            margin: 0,
+            overflowX: 'scroll',
           }}
         >
           {data}
         </pre>
       )}
-    </div>
+    </Container>
   );
 }

@@ -45,7 +45,7 @@ export function MainPage() {
         </Grid>
       </Grid>
 
-      <Grid item xs={12} sm={6} component='section'>
+      <Grid item xs={12} sm={6} component='section' sx={{ minHeight: '100%' }}>
         <ResponseSection />
       </Grid>
     </Grid>
