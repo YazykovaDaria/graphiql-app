@@ -8,6 +8,7 @@ import { Editor } from 'src/components/editor/Editor';
 import { ResponseSection } from 'src/components/responseSection/ResponseSection';
 import { Grid, useTheme } from '@mui/material';
 import { DocsExplorer } from 'src/components/docsExplorer/DocsExplorer';
+import { initHeaders } from 'src/store/slices/editorSlice';
 import { queryForScheema } from './const';
 
 export function MainPage() {
@@ -23,7 +24,7 @@ export function MainPage() {
   useEffect(() => {
     const init = async () => {
       try {
-        const res = await getDocs({ newQuery: queryForScheema });
+        const res = await getDocs({ newQuery: queryForScheema, headers: initHeaders });
         if ('data' in res) {
           dispatch(addScheema(res));
         }

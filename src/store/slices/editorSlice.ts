@@ -1,15 +1,23 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+export type Headers = {
+  [key: string]: string;
+};
+
 type EditorSliceState = {
   query: string;
   variables: string;
-  headers: string;
+  headers: Headers;
+};
+
+export const initHeaders: Headers = {
+  'Content-type': 'application/json',
 };
 
 const initialState: EditorSliceState = {
   query: '',
   variables: '{}',
-  headers: '',
+  headers: initHeaders,
 };
 
 const editorSlice = createSlice({
@@ -22,7 +30,7 @@ const editorSlice = createSlice({
     updateVariables(state, action: PayloadAction<string>) {
       state.variables = action.payload;
     },
-    updateHeaders(state, action: PayloadAction<string>) {
+    updateHeaders(state, action: PayloadAction<Headers>) {
       state.headers = action.payload;
     },
   },

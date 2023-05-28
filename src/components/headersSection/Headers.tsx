@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { useAppSelector, useAppDispatch } from 'src/hooks/reduxHooks';
-import { updateHeaders } from 'src/store/slices/editorSlice';
+import { useAppSelector } from 'src/hooks/reduxHooks';
+import { Headers as HeadersType } from 'src/store/slices/editorSlice';
 import { useState } from 'react';
 import { useAutoComplete } from 'src/hooks/useAutoComplete';
 import {
@@ -12,16 +12,19 @@ import {
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
+const normalizeObj = (headers: HeadersType): string => {
+  const entries = Object.entries(headers);
+  const str = entries.map(([key, val]) => `'${key}': '${val}'`);
+  return `${str.join('\n')}`;
+};
+
 export function Headers() {
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
   const { headers } = useAppSelector((state) => state.editor);
-  const [value, setValue] = useState(headers);
+  const [value, setValue] = useState(normalizeObj(headers));
   const [handleChange, inputRef] = useAutoComplete(setValue, 1);
 
-  const handleBlur = () => {
-    dispatch(updateHeaders(value.trim()));
-  };
+  const handleBlur = () => {};
 
   return (
     <Accordion data-testid='headers'>
