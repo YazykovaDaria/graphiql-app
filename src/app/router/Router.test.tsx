@@ -1,42 +1,18 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-
-import { vi } from 'vitest';
+import { I18nextProvider } from 'react-i18next';
+import i18n from 'src/i18next/i18nForTests';
 import { Router } from './Router';
-import { locales } from '../../components/langSwitcher/LangSwitcher';
-
-const languages = Object.keys(locales);
-const [defaultLang] = languages;
-
-beforeEach(() => {
-  vi.mock('react-i18next', () => ({
-    useTranslation: () => {
-      return {
-        t: (str: string) => str,
-        i18n: {
-          changeLanguage: () => new Promise(() => {}),
-          resolvedLanguage: defaultLang,
-        },
-      };
-    },
-    initReactI18next: {
-      type: '3rdParty',
-      init: () => {},
-    },
-  }));
-});
 
 describe('Router', () => {
   it('should render 404 if path is invalid', () => {
     render(
       <MemoryRouter initialEntries={['/nonexistent-path']}>
-        <Router />
+        <I18nextProvider i18n={i18n}>
+          <Router />
+        </I18nextProvider>
       </MemoryRouter>
     );
-    expect(
-      screen.getByRole('heading', {
-        level: 2,
-      })
-    ).toHaveTextContent(/not found/i);
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/not exist/i);
   });
 });

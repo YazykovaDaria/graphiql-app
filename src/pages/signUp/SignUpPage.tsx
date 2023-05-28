@@ -22,7 +22,16 @@ export function SignUpPage() {
   };
 
   return (
-    <Container>
+    <Container
+      component='main'
+      maxWidth='xs'
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 'auto',
+      }}
+    >
       <AuthForm title={t('auth.sign-up')} link='sign-in' authSubmit={onSubmit} />
     </Container>
   );

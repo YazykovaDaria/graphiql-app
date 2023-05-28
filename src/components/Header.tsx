@@ -1,59 +1,49 @@
-import { AppBar, Typography, Toolbar, Box, Link } from '@mui/material';
-import useScrollTrigger from '@mui/material/useScrollTrigger';
+import { Link as RouterLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-
-import { Link as NavLink } from 'react-router-dom';
+import { AppBar, Toolbar, Link, useScrollTrigger, Container, Divider, Grid } from '@mui/material';
 import { useAuth } from '../hooks/useAuth';
 import { LangSwitcher } from './langSwitcher/LangSwitcher';
 import { AuthButton } from './authButton/AuthButton';
+import ThemeButton from './ThemeButton';
 
 export function Header() {
   const { t } = useTranslation();
-
   const { email, checked } = useAuth();
-
-  const trigger = useScrollTrigger();
+  const trigger = useScrollTrigger({ disableHysteresis: true, threshold: 0 });
 
   return (
-    <AppBar sx={{ height: !trigger ? '4rem' : '3rem', transition: '0.6s' }}>
-      <Toolbar
-        sx={{ color: 'white' }}
-        id='back-to-top-anchor'
-        style={{ minHeight: '3rem', height: '100%' }}
-      >
-        <NavLink to='/' style={{ fontSize: 'inherit', color: 'inherit', textDecoration: 'none' }}>
-          <Typography component='h1'>RS React GraphQL</Typography>
-        </NavLink>
-
-        <Box flexGrow={1} />
-        <LangSwitcher />
-        {checked && !email ? (
-          <Link
-            component={NavLink}
-            to='/sign-up'
-            sx={{
-              textDecoration: 'none',
-              color: 'white',
-              backgroundColor: 'rgb(25, 118, 210)',
-              padding: '20px',
-              borderRadius: '10px',
-            }}
+    <AppBar position='sticky' color='inherit' elevation={trigger ? 4 : 0} sx={{ flexWrap: 'wrap' }}>
+      <Container maxWidth='xl'>
+        <Toolbar disableGutters>
+          <Grid
+            container
+            spacing={{ xs: 2, md: 3 }}
+            columns={{ xs: 4, sm: 8, md: 12 }}
+            alignItems='center'
+            justifyContent='center'
           >
-            {t('header.register-button').toUpperCase()}
-          </Link>
-        ) : (
-          ''
-        )}
-        <AuthButton
-          title={`${
-            email && checked
-              ? t('header.authorization-button.log-out')
-              : t('header.authorization-button.log-in')
-          }`}
-          isLogout={!!email}
-          link='sign-in'
-        />
-      </Toolbar>
+            <Grid item>
+              <Link variant='h6' component={RouterLink} to='/' color='inherit' underline='hover'>
+                GraphiQL
+              </Link>
+            </Grid>
+            <Grid item flexGrow={{ sx: 0, sm: 1 }} />
+            <Grid item>
+              <LangSwitcher />
+              <ThemeButton />
+            </Grid>
+            <Grid item>
+              <AuthButton
+                title={email && checked ? t('auth.logout') : t('auth.sign-in')}
+                isLogout={!!email}
+                link='sign-in'
+              />
+              {checked && !email && <AuthButton title={t('auth.sign-up')} link='sign-up' />}
+            </Grid>
+          </Grid>
+        </Toolbar>
+      </Container>
+      <Divider />
     </AppBar>
   );
 }

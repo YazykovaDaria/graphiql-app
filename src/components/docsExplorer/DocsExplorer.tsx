@@ -1,5 +1,5 @@
 import { useAppSelector } from 'src/hooks/reduxHooks';
-import { Container, useMediaQuery, TabScrollButton } from '@mui/material';
+import { Container, useMediaQuery } from '@mui/material';
 import { DocsRouter } from './DocsRouter';
 
 export function DocsExplorer() {
@@ -26,7 +26,7 @@ export function DocsExplorer() {
         overflowY: 'scroll',
       }}
     >
-      <Container sx={{ height: '200vh' }} />
+      <Container />
       {data ? <DocsRouter /> : <p>data not found</p>}
     </Container>
   );

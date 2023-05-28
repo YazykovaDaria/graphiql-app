@@ -1,59 +1,69 @@
-import useScrollTrigger from '@mui/material/useScrollTrigger';
-import { CssBaseline, Fade, Box, Fab } from '@mui/material';
-import { ArrowUpward } from '@mui/icons-material';
+import { useState, useMemo } from 'react';
 import { Outlet } from 'react-router-dom';
+import { SnackbarProvider } from 'notistack';
+import {
+  Box,
+  CssBaseline,
+  ThemeProvider,
+  createTheme,
+  responsiveFontSizes,
+  useMediaQuery,
+} from '@mui/material';
+import ScrollTop from 'src/components/ScrollTop';
+import { ColorModeContext } from 'src/components/ThemeButton';
 import { Header } from '../components/Header';
-import { Main } from '../components/Main';
 import { Footer } from '../components/Footer';
 
-interface ScrollElementProps {
-  children?: React.ReactElement;
-}
-
-function ScrollTop({ children = undefined }: ScrollElementProps) {
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 100,
-  });
-
-  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    const anchor = ((event.target as HTMLDivElement).ownerDocument || document).querySelector(
-      '#back-to-top-anchor'
-    );
-
-    anchor?.scrollIntoView({
-      block: 'center',
-    });
-  };
-
-  return (
-    <Fade in={trigger}>
-      <Box
-        onClick={handleClick}
-        role='presentation'
-        sx={{ position: 'fixed', bottom: 60, right: 16 }}
-      >
-        {children}
-      </Box>
-    </Fade>
-  );
-}
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 function Layout() {
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+
+  if (!localStorage.theme) {
+    if (prefersDarkMode) localStorage.theme = 'dark';
+    else localStorage.theme = 'light';
+  }
+
+  const [mode, setMode] = useState<'dark' | 'light'>(
+    localStorage.theme === 'dark' ? 'dark' : 'light'
+  );
+
+  const colorMode = useMemo(
+    () => ({
+      toggleColorMode: () => {
+        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+      },
+    }),
+    []
+  );
+
+  const theme = useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode,
+        },
+      }),
+    [mode]
+  );
+
   return (
-    <>
-      <CssBaseline />
-      <Header />
-      <Main>
-        <Outlet />
-      </Main>
-      <ScrollTop>
-        <Fab size='small' aria-label='scroll back to top' sx={{ zIndex: 3 }}>
-          <ArrowUpward />
-        </Fab>
-      </ScrollTop>
-      <Footer />
-    </>
+    <SnackbarProvider>
+      <ColorModeContext.Provider value={colorMode}>
+        <ThemeProvider theme={responsiveFontSizes(theme)}>
+          <Box display='flex' flexDirection='column' minHeight='100vh'>
+            <CssBaseline enableColorScheme />
+            <Header />
+            <Outlet />
+            <Footer />
+            <ScrollTop />
+          </Box>
+        </ThemeProvider>
+      </ColorModeContext.Provider>
+    </SnackbarProvider>
   );
 }
 

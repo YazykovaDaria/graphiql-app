@@ -1,25 +1,78 @@
-import { Container, Toolbar, Box, Link, Stack, Typography } from '@mui/material';
+import { Box, Link, Container, Typography, Paper, Grid } from '@mui/material';
+import { styled, useTheme } from '@mui/material/styles';
+import { ReactComponent as RSSchoolLogo } from 'src/assets/rsschool-logo.svg';
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor:
+    theme.palette.mode === 'dark' ? theme.palette.common.black : theme.palette.common.white,
+  padding: theme.spacing(1),
+}));
 
 export function Footer() {
+  const appTheme = useTheme();
+  const invertAmount = appTheme.palette.mode === 'light' ? 0 : 100;
+
   return (
-    <Container component='footer'>
-      <Toolbar>
-        <Stack>
-          <Link href='https://github.com/YazykovaDaria'>YazykovaDaria</Link>
-          <Link href='https://github.com/Doooodie'>Doooodie</Link>
-          <Link href='https://github.com/ivan52945'>Nemicus</Link>
-        </Stack>
-        <Box flexGrow={1} />
-        <Typography>2023</Typography>
-        <Box flexGrow={1} />
-        <Link href='https://rs.school/'>
-          <img
-            src='https://rs.school/images/partners/logo-rs.svg'
-            alt='RS'
-            style={{ height: '50px' }}
-          />
-        </Link>
-      </Toolbar>
-    </Container>
+    <Box
+      component='footer'
+      py={3}
+      mt='auto'
+      bgcolor={(theme) =>
+        theme.palette.mode === 'light' ? theme.palette.grey[200] : theme.palette.grey[800]
+      }
+    >
+      <Container maxWidth='xl'>
+        <Grid
+          container
+          spacing={{ xs: 2, md: 3 }}
+          columns={{ xs: 4, sm: 8, md: 12 }}
+          alignItems='center'
+          justifyContent='center'
+        >
+          <Grid item>
+            <Item>
+              <Link href='https://rs.school/' target='_blank' color='inherit' underline='none'>
+                <RSSchoolLogo
+                  height={50}
+                  style={{ filter: `invert(${invertAmount})`, fill: 'initial' }}
+                />
+              </Link>
+            </Item>
+          </Grid>
+          <Grid item flexGrow={{ sx: 0, sm: 1 }} />
+          <Grid item>
+            <Item>
+              <Link
+                href='https://github.com/Doooodie'
+                target='_blank'
+                color='inherit'
+                underline='hover'
+              >
+                Doodie
+              </Link>
+              <Typography component='span'>, </Typography>
+              <Link
+                href='https://github.com/ivan52945'
+                target='_blank'
+                color='inherit'
+                underline='hover'
+              >
+                Nemicus
+              </Link>
+              <Typography component='span'> & </Typography>
+              <Link
+                href='https://github.com/YazykovaDaria'
+                target='_blank'
+                color='inherit'
+                underline='hover'
+              >
+                Daria
+              </Link>
+              <Typography component='span'>, 2023</Typography>
+            </Item>
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
   );
 }

@@ -6,11 +6,17 @@ import { addScheema } from 'src/store/slices/docsSlice';
 import { Toolbar } from 'src/components/toolbar/Toolbar';
 import { Editor } from 'src/components/editor/Editor';
 import { ResponseSection } from 'src/components/responseSection/ResponseSection';
-import { Grid } from '@mui/material';
+import { Grid, useTheme } from '@mui/material';
 import { DocsExplorer } from 'src/components/docsExplorer/DocsExplorer';
 import { queryForScheema } from './const';
 
 export function MainPage() {
+  const {
+    palette: { mode },
+  } = useTheme();
+
+  const light = mode === 'light';
+
   const dispatch = useAppDispatch();
   const [getDocs] = useGetGraphQueryMutation();
 
@@ -22,7 +28,7 @@ export function MainPage() {
           dispatch(addScheema(res.data));
         }
       } catch (error) {
-        console.log(error);
+        throw new Error(`Fetch error - ${error}`);
       }
     };
     init();
@@ -36,10 +42,10 @@ export function MainPage() {
       sx={{
         p: 1,
         width: '100%',
-        height: '100vh',
         borderRadius: '10px',
-        background: '#F0F0F0',
+        background: light ? '#F0F0F0' : '#1D1D1D',
         m: 0,
+        flexGrow: 1,
       }}
     >
       <Grid
@@ -47,9 +53,13 @@ export function MainPage() {
         xs={12}
         sm={6}
         component='section'
-        sx={{ background: 'white', borderRadius: '10px', pr: 1 }}
+        sx={{
+          background: light ? 'white' : '#000000',
+          borderRadius: '10px',
+          pr: 1,
+        }}
       >
-        <Grid container spacing={2}>
+        <Grid container spacing={2} sx={{ minHeight: '100%' }}>
           <Grid item xs={10} sx={{ px: '10px' }}>
             <Editor />
           </Grid>

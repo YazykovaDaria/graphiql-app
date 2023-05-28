@@ -9,7 +9,8 @@ import { AuthForm } from './AuthForm';
 describe('Auth form', () => {
   const title = 'Sign up';
   const mockEmail = 'real-email@mail.com';
-  const mockPassword = 'BadPassword123';
+  const mockPassword = 'RealPass.123';
+  const badPassword = 'BadPassword123';
   const rejectedValue = 'fail';
   const resolvedValue = 'done';
 
@@ -50,27 +51,18 @@ describe('Auth form', () => {
   it('throws an error if password requirements are not met', async () => {
     const emailField = screen.getByRole('textbox', { name: 'Email Address' });
     const passwordField = screen.getByLabelText(/password/i);
-    await userEvent.type(passwordField, 'bad-password');
+    await userEvent.type(passwordField, badPassword);
     await userEvent.click(emailField);
 
     expect(screen.getByText(/password should contain/i)).toBeVisible();
   });
 
-  it.todo('allows user to press submit button if all requirements are met', async () => {
+  it('allows user to press submit button if all requirements are met', async () => {
     const emailField = screen.getByRole('textbox', { name: 'Email Address' });
     const passwordField = screen.getByLabelText(/password/i);
-    await userEvent.type(emailField, mockEmail);
-    await userEvent.type(passwordField, 'RealPass123');
-
-    expect(screen.getByRole('button')).toBeEnabled();
-  });
-
-  it.todo('throws an error if there are problems on server side', async () => {
-    const emailField = screen.getByRole('textbox', { name: 'Email Address' });
-    const passwordField = screen.getByLabelText(/password/i);
-    const submitButton = screen.getByRole('button');
     await userEvent.type(emailField, mockEmail);
     await userEvent.type(passwordField, mockPassword);
-    await userEvent.click(submitButton);
+
+    expect(screen.getByRole('button')).toBeEnabled();
   });
 });
