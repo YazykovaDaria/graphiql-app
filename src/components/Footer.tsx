@@ -32,7 +32,10 @@ export function Footer() {
           <Grid item>
             <Item>
               <Link href='https://rs.school/' target='_blank' color='inherit' underline='none'>
-                <RSSchoolLogo height={50} style={{ filter: `invert(${invertAmount})` }} />
+                <RSSchoolLogo
+                  height={50}
+                  style={{ filter: `invert(${invertAmount})`, fill: 'initial' }}
+                />
               </Link>
             </Item>
           </Grid>
