@@ -20,10 +20,11 @@
     "variables": "variables",
     "headers": "headers",
     "networkError": "Network error",
-    "notDocs": "Failed to load schema"
+    "notDocs": "Failed to load scheema"
   },
   "hello": {
     "get-started": "Get started",
+    "to-main": "Go to main",
     "learn-more": "Learn more",
     "heading": {
       "describe": "Describe your data",
