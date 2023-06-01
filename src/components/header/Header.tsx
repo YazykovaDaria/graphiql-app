@@ -2,7 +2,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { AppBar, Toolbar, Link, useScrollTrigger, Container, Divider, Grid } from '@mui/material';
 import { useAuth } from '../../hooks/useAuth';
-import { LangSwitcher } from '../langSwitcher/LangSwitcher';
+import { LangSwitcher } from './langSwitcher/LangSwitcher';
 import { LinkBtnWithAuth } from './linkBtn/LinkBtnWithAuth';
 import ThemeButton from '../ThemeButton';
 

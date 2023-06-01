@@ -1,6 +1,6 @@
 import { Box, Link, Container, Typography, Paper, Grid } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
-import { ReactComponent as RSSchoolLogo } from 'src/assets/rsschool-logo.svg';
+import { ReactComponent as RSSchoolLogo } from 'src/assets/icons/rsschool-logo.svg';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor:
@@ -33,7 +33,7 @@ export function Footer() {
             <Item>
               <Link href='https://rs.school/' target='_blank' color='inherit' underline='none'>
                 <RSSchoolLogo
-                  height={50}
+                  height={30}
                   style={{ filter: `invert(${invertAmount})`, fill: 'initial' }}
                 />
               </Link>
