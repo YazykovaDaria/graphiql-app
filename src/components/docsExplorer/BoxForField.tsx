@@ -27,7 +27,7 @@ export function BoxForField({ field, rout }: Props) {
           {field.type && <FieldTypeLink types={field.type} />}
         </Box>
 
-        <Typography sx={{ color: 'green' }}>{field.description}</Typography>
+        <Typography>{field.description}</Typography>
       </Box>
     );
   }

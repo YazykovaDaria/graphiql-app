@@ -7,7 +7,12 @@ type Props = {
   hoverColor?: string;
 };
 
-export function FakeLink({ children, onClick, mainColor = 'blue', hoverColor = 'green' }: Props) {
+export function FakeLink({
+  children,
+  onClick,
+  mainColor = '#1976d2',
+  hoverColor = '#00c853',
+}: Props) {
   return (
     <Typography
       onClick={onClick}
