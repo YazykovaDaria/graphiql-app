@@ -11,8 +11,8 @@ import {
 } from '@mui/material';
 import ScrollTop from 'src/components/ScrollTop';
 import { ColorModeContext } from 'src/context/colorModeContext';
+import { Footer } from 'src/components/Footer';
 import { Header } from '../components/header/Header';
-import { Footer } from '../components/Footer';
 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';

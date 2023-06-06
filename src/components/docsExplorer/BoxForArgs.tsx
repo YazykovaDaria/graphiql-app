@@ -14,7 +14,8 @@ export function BoxForArgs({ args }: Props) {
         return (
           <Box sx={{ display: 'flex' }} key={uuidv4()}>
             <Box sx={{ display: 'flex', gap: '5px' }}>
-              <Typography>{`${arg.name}:`}</Typography>
+              <Typography>{`${arg.name}`}</Typography>
+              <Typography>:</Typography>
               {arg.type && <FieldTypeLink types={arg.type} name={arg.name} />}
             </Box>
           </Box>

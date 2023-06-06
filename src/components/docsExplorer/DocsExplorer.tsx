@@ -26,6 +26,7 @@ export function DocsExplorer() {
         background: '#ECFFE2',
         borderRadius: '10px',
         overflowY: 'scroll',
+        pb: '10px',
       }}
     >
       {data ? <DocsRouter /> : <p>{t('main.notDocs')}</p>}

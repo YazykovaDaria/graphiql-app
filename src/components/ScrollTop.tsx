@@ -10,7 +10,7 @@ function ScrollTop() {
       <Box
         onClick={() => animateScroll.scrollToTop()}
         role='presentation'
-        sx={{ position: 'fixed', bottom: 90, right: 50 }}
+        sx={{ position: 'fixed', bottom: 90, right: 50, zIndex: 10 }}
       >
         <Fab size='small'>
           <KeyboardArrowUpIcon />

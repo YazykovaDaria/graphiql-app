@@ -15,7 +15,7 @@ export function BoxForField({ field, rout }: Props) {
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         <Typography variant='h6'>{field.name}</Typography>
 
-        <Box sx={{ display: 'flex', gap: '5px' }}>
+        <Box sx={{ display: 'flex', gap: '5px', flexWrap: 'wrap' }}>
           {field.args && (
             <>
               <span>(</span>
