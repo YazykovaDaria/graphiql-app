@@ -4,7 +4,7 @@ import { AppBar, Toolbar, Link, useScrollTrigger, Container, Divider, Grid } fro
 import { useAuth } from '../../hooks/useAuth';
 import { LangSwitcher } from './langSwitcher/LangSwitcher';
 import { LinkBtnWithAuth } from './linkBtn/LinkBtnWithAuth';
-import ThemeButton from '../ThemeButton';
+import ThemeButton from './ThemeButton';
 
 export function Header() {
   const { t } = useTranslation();

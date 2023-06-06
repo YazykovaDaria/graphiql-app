@@ -10,7 +10,7 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import ScrollTop from 'src/components/ScrollTop';
-import { ColorModeContext } from 'src/components/ThemeButton';
+import { ColorModeContext } from 'src/context/colorModeContext';
 import { Header } from '../components/header/Header';
 import { Footer } from '../components/Footer';
 
