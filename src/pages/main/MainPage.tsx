@@ -75,7 +75,7 @@ export function MainPage() {
         xs={12}
         sm={6}
         component='section'
-        sx={{ position: 'relative', minHeight: '100%' }}
+        sx={{ position: 'relative', minHeight: '100%', overflow: 'hidden' }}
       >
         <ResponseSection />
         <DocsExplorer />

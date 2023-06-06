@@ -8,13 +8,10 @@ export function DocsExplorer() {
   const { data } = scheema;
   const { t } = useTranslation();
 
+  const { mode } = useTheme().palette;
+  const background = mode === 'dark' ? '#263238' : '#eceff1';
+
   const query = useMediaQuery('(min-width:600px)');
-
-  const {
-    palette: { mode },
-  } = useTheme();
-
-  const light = mode === 'light';
 
   const translateDir = query ? 'X' : 'Y';
 
@@ -27,11 +24,11 @@ export function DocsExplorer() {
         transition: '0.4s',
         transform: isOpen ? `translate${translateDir}(5px)` : `translate${translateDir}(200%)`,
         height: '100%',
-        backgroundColor: 'white',
+        backgroundColor: background,
         zIndex: 2,
-        background: light ? '#EBEBEB' : '#1D1D1D',
         borderRadius: '10px',
         overflowY: 'scroll',
+        pb: '10px',
       }}
     >
       {data ? <DocsRouter /> : <p>{t('main.notDocs')}</p>}
