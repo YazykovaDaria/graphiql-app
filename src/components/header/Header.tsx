@@ -1,9 +1,9 @@
 import { Link as RouterLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { AppBar, Toolbar, Link, useScrollTrigger, Container, Divider, Grid } from '@mui/material';
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from '../../hooks/useAuth';
 import { LangSwitcher } from './langSwitcher/LangSwitcher';
-import { AuthButton } from './authButton/AuthButton';
+import { LinkBtnWithAuth } from './linkBtn/LinkBtnWithAuth';
 import ThemeButton from './ThemeButton';
 
 export function Header() {
@@ -33,12 +33,14 @@ export function Header() {
               <ThemeButton />
             </Grid>
             <Grid item>
-              <AuthButton
+              {email && checked && <LinkBtnWithAuth link='main' title={t('hello.to-main')} />}
+              <LinkBtnWithAuth
                 title={email && checked ? t('auth.logout') : t('auth.sign-in')}
                 isLogout={!!email}
                 link='sign-in'
               />
-              {checked && !email && <AuthButton title={t('auth.sign-up')} link='sign-up' />}
+
+              {checked && !email && <LinkBtnWithAuth title={t('auth.sign-up')} link='sign-up' />}
             </Grid>
           </Grid>
         </Toolbar>

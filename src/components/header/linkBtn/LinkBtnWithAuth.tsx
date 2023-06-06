@@ -4,13 +4,13 @@ import { signOut } from 'firebase/auth';
 import { LoadingButton } from '@mui/lab';
 import { auth } from 'src/utils/firebase/firebase';
 
-type AuthButtonProps = {
+type LinkBtnWithAuthProps = {
   title: string;
-  link: 'sign-in' | 'sign-up';
+  link: string;
   isLogout?: boolean;
 };
 
-export function AuthButton({ title, link, isLogout = false }: AuthButtonProps) {
+export function LinkBtnWithAuth({ title, link, isLogout = false }: LinkBtnWithAuthProps) {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 

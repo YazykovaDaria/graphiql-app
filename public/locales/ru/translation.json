@@ -25,6 +25,7 @@
   },
   "hello": {
     "get-started": "Начать",
+    "to-main": "На главную",
     "learn-more": "Узнать больше",
     "heading": {
       "describe": "Опишите ваши данные",
