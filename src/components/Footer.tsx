@@ -43,6 +43,15 @@ export function Footer() {
           <Grid item>
             <Item>
               <Link
+                href='https://github.com/YazykovaDaria'
+                target='_blank'
+                color='inherit'
+                underline='hover'
+              >
+                Daria
+              </Link>
+              <Typography component='span'>, </Typography>
+              <Link
                 href='https://github.com/Doooodie'
                 target='_blank'
                 color='inherit'
@@ -50,7 +59,8 @@ export function Footer() {
               >
                 Doodie
               </Link>
-              <Typography component='span'>, </Typography>
+
+              <Typography component='span'> & </Typography>
               <Link
                 href='https://github.com/ivan52945'
                 target='_blank'
@@ -58,15 +68,6 @@ export function Footer() {
                 underline='hover'
               >
                 Nemicus
-              </Link>
-              <Typography component='span'> & </Typography>
-              <Link
-                href='https://github.com/YazykovaDaria'
-                target='_blank'
-                color='inherit'
-                underline='hover'
-              >
-                Daria
               </Link>
               <Typography component='span'>, 2023</Typography>
             </Item>
