@@ -2,7 +2,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Button, Grid, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from 'src/hooks/useAuth';
-import { ReactComponent as GraphQlLogo } from 'src/assets/graphql-logo-stacked.svg';
+import { ReactComponent as GraphQlLogo } from 'src/assets/icons/graphql-logo-stacked.svg';
 
 export function WelcomeHeading() {
   const { t } = useTranslation();
