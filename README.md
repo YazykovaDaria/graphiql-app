@@ -22,8 +22,10 @@
 - Redux Toolkit
 - React Hook Form
 - Firebase
+- i18next
 - Material UI
 - Vite
 - Vitest
+- Eslint, Prettier, Husky
 
 
