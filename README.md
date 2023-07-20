@@ -28,4 +28,10 @@
 - Vitest
 - Eslint, Prettier, Husky
 
+  #### Example:  https://graphiql-app-iota.vercel.app/
+  
+
+  ![Снимок экрана от 2023-07-20 17-46-26](https://github.com/YazykovaDaria/graphiql-app/assets/93446641/f063e6c7-054c-4f45-a16f-14cbca4d725d)
+
+
 
